@@ -1,0 +1,8 @@
+{
+  "name": "Remix Kinetic — Editorial Physiotherapy \u0026 Biomechanics",
+  "description": "Evidence-led physiotherapy grounded in Japanese design principles — Ma (interval & breathing space), Shibui (understated precision), and Wabi-Sabi (organic biomechanical balance).",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
