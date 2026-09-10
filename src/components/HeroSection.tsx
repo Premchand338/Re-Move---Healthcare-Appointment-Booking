@@ -6,7 +6,7 @@ import {
   CheckCircle2, Calendar, Activity, Sparkles, UserCheck, 
   ChevronRight, Layers, ArrowUpRight, Zap
 } from 'lucide-react';
-import heroPhysioImage from '../assets/images/hero_physiotherapy_1788460964008.jpg';
+import heroPhysioImage from '../assets/images/hero.png';
 
 // CONTINUOUS ROTATING SERVICES AT KINETIC
 const KINETIC_SERVICES = [
@@ -145,19 +145,19 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
           className="w-full h-full object-cover object-center md:object-[center_35%]"
         />
 
-        {/* Photometric multi-depth scrims engineered for legibility and theme contrast */}
-        <div className="absolute inset-0 bg-gradient-to-r from-neutral-950/98 via-neutral-950/88 to-neutral-950/65" />
-        <div className="absolute inset-0 bg-gradient-to-b from-neutral-950/80 via-neutral-950/40 to-neutral-950/95" />
-        <div className="absolute inset-0 bg-grid-subtle opacity-15 mix-blend-overlay" />
+        {/* Clean daylight scrims keep the clinical image visible while protecting text contrast. */}
+        <div className="absolute inset-0 bg-linear-to-r from-neutral-950/70 via-neutral-950/34 to-neutral-950/8" />
+        <div className="absolute inset-0 bg-linear-to-b from-neutral-950/20 via-transparent to-neutral-950/54" />
+        <div className="absolute inset-0 bg-white/5 mix-blend-soft-light" />
       </div>
 
       {/* 🛑 CORE EDITORIAL CONTAINER 🛑 */}
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-10 md:pt-14 md:pb-16">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 pb-14 md:pt-18 md:pb-20">
         
         {/* ══════════════════════════════════════════════════════════════════
             1. UPPER HERO CONTENT WITH THEME BORDER & ROTATING MOTION SERVICES
             ══════════════════════════════════════════════════════════════════ */}
-        <div className="relative rounded-3xl border-2 border-white/20 bg-neutral-950/80 backdrop-blur-2xl p-6 sm:p-9 lg:p-10 real-shadow-2xl overflow-hidden mb-6">
+        <div className="relative border-2 border-white/35 bg-neutral-950/48 p-7 sm:p-10 lg:p-12 overflow-hidden mb-8">
           
           {/* Theme Architectural Corner Crosshair Accents */}
           <div className="absolute top-3 left-3 text-neutral-600 font-clinical-mono text-xs select-none pointer-events-none">
@@ -174,72 +174,93 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
           </div>
 
           {/* Glowing Ambient Radial Backdrop with Kintsugi Warmth */}
-          <div className="absolute top-0 right-1/4 w-96 h-96 bg-[#C59E5F]/10 rounded-full blur-3xl pointer-events-none -z-10" />
+          <div className="absolute top-0 right-1/4 w-96 h-96 bg-white/5 blur-3xl pointer-events-none -z-10" />
 
           {/* Top Status & Accreditation Bar */}
           <div className="flex flex-wrap items-center justify-between gap-3 pb-5 border-b border-white/10 mb-6">
             
             <div className="flex items-center gap-2.5">
-              <span className="flex items-center gap-1.5 bg-white/10 backdrop-blur-md border border-white/20 px-3 py-1 rounded-full text-xs font-clinical-mono text-white font-bold tracking-wider">
+              <span className="flex items-center gap-1.5 bg-white/15 backdrop-blur-md border border-white/30 px-3 py-1 rounded-full text-xs font-clinical-mono text-white font-bold tracking-wider shadow-lg shadow-black/10">
                 <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
                 DOCTORAL PHYSICAL THERAPY &amp; MOTION LABS
               </span>
-              <span className="hidden sm:inline text-neutral-500 font-clinical-mono text-xs">·</span>
+              {/* <span className="hidden sm:inline text-neutral-500 font-clinical-mono text-xs">·</span>
               <span className="hidden sm:inline font-clinical-mono text-xs text-neutral-300">
                 Direct Access Care (No Doctor Referral Required)
-              </span>
+              </span> */}
             </div>
 
             {/* Live Service Indicator Badge */}
-            <div className="flex items-center gap-2 text-xs font-clinical-mono text-[#E5C287] bg-[#C59E5F]/15 px-3 py-1 rounded-full border border-[#C59E5F]/30">
-              <Activity size={13} className="text-[#DFBA73]" />
+            <div className="flex items-center gap-2 text-xs font-clinical-mono text-[#FFF04B] bg-[#FFF04B]/15 px-3 py-1 rounded-full border border-[#FFF04B]/30">
+              <Activity size={13} className="text-[#FFF04B]" />
               <span className="font-bold uppercase tracking-wider">Kinematic Specialization:</span>
               <span className="text-white font-bold">{currentService.code}</span>
             </div>
           </div>
 
           {/* Hero Grid: Main Display Typography + Live Motion Services Display */}
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-10 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
             
             {/* Left 8 Cols: Display Headline with Smooth Rotating Services Motion */}
             <div className="lg:col-span-8">
               
-              <div className="text-xs sm:text-sm font-clinical-mono uppercase tracking-[0.22em] text-[#DFBA73] font-bold mb-2.5 flex items-center gap-2">
+              {/* <div className="text-xs sm:text-sm font-clinical-mono uppercase tracking-[0.22em] text-[#DFBA73] font-bold mb-2.5 flex items-center gap-2">
                 <Sparkles size={14} className="text-[#DFBA73]" />
                 <span>「間」Ma ·「渋」Shibui ·「侘寂」Wabi-Sabi Biomechanical Excellence</span>
-              </div>
+              </div> */}
 
               {/* Main Headline with Animated Rotating Text */}
               <h1 className="font-editorial-serif text-3xl sm:text-4xl md:text-5xl lg:text-[3.4rem] font-normal tracking-tight text-white leading-[1.1] mb-4">
                 Clinical physical therapy for{' '}
-                <span className="inline-block relative min-h-[1.25em] align-top text-[#DFBA73]">
-                  <AnimatePresence>
+                <span className="inline-block relative min-h-[1.25em] align-top text-[#FFF04B]">
+                  <AnimatePresence mode="wait">
                     <motion.span
                       key={currentService.id}
-                      initial={{ opacity: 0, y: 10 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: -10 }}
-                      transition={{ duration: 0.3 }}
-                      className="font-editorial-serif italic inline-block font-semibold text-[#DFBA73]"
+                      initial="hidden"
+                      animate="visible"
+                      exit="exit"
+                      variants={{
+                        hidden: {},
+                        visible: {},
+                        exit: { opacity: 0, y: -8, transition: { duration: 0.18 } }
+                      }}
+                      className="font-editorial-serif italic inline-block font-semibold text-[#FFF04B]"
+                      aria-label={`${currentService.title}.`}
                     >
-                      {currentService.title}.
+                      {`${currentService.title}.`.split(' ').map((word, index) => (
+                        <span key={`${currentService.id}-${word}-${index}`} className="inline-block overflow-hidden align-bottom">
+                          <motion.span
+                            initial={{ opacity: 0, y: '100%' }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{
+                              duration: 0.38,
+                              delay: index * 0.065,
+                              ease: [0.22, 1, 0.36, 1]
+                            }}
+                            className="inline-block"
+                          >
+                            {word}
+                          </motion.span>
+                          {index < currentService.title.split(' ').length - 1 && ' '}
+                        </span>
+                      ))}
                     </motion.span>
                   </AnimatePresence>
                 </span>
               </h1>
 
               {/* Dynamic Service Sub-Description with Fade Transition */}
-              <div className="min-h-[2.5rem] mb-5">
-                <AnimatePresence>
+              <div className="min-h-10 mb-5">
+                <AnimatePresence mode="wait">
                   <motion.div
                     key={currentService.id}
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
-                    transition={{ duration: 0.25 }}
-                    className="flex items-center gap-2 text-sm sm:text-base text-neutral-300 font-editorial-sans"
+                    transition={{ duration: 0.3, delay: 0.28 }}
+                    className="flex items-center gap-2 text-sm sm:text-base text-neutral-100 font-editorial-sans"
                   >
-                    <span className="px-2 py-0.5 rounded-md bg-[#C59E5F]/20 font-clinical-mono text-xs font-bold text-[#E5C287] border border-[#C59E5F]/30">
+                    <span className="px-2 py-0.5 rounded-md bg-[#FFF04B]/15 font-clinical-mono text-xs font-bold text-[#FFF04B] border border-[#FFF04B]/30">
                       {currentService.category}
                     </span>
                     <span>{currentService.subtext}</span>
@@ -248,9 +269,9 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
               </div>
 
               {/* Value Proposition Description */}
-              <p className="text-sm sm:text-base text-neutral-300 font-editorial-sans leading-relaxed max-w-2xl">
+              {/* <p className="text-sm sm:text-base text-neutral-300 font-editorial-sans leading-relaxed max-w-2xl">
                 Experience 60-minute one-on-one sessions exclusively with Board-Certified Doctors of Physical Therapy (DPTs). We diagnose your entire kinetic chain using 3D motion analysis, followed by verified cashless claims with Star Health, HDFC ERGO, ICICI Lombard & Bupa.
-              </p>
+              </p> */}
 
             </div>
 
@@ -258,8 +279,8 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
             <div className="lg:col-span-4 flex flex-col gap-3.5">
               
               {/* Doctor On Duty Card */}
-              <div className="bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl p-4 real-shadow-md">
-                <div className="flex items-center justify-between text-[11px] font-clinical-mono text-neutral-400 mb-2 pb-2 border-b border-white/10">
+              <div className="bg-white/16 border border-white/30 rounded-2xl p-4 real-shadow-lg shadow-black/20">
+                <div className="flex items-center justify-between text-[11px] font-clinical-mono text-neutral-200 mb-2 pb-2 border-b border-white/10">
                   <span className="flex items-center gap-1.5 text-emerald-400 font-bold uppercase">
                     <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
                     Bandra Flagship Active
@@ -280,7 +301,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
                         DPT
                       </span>
                     </div>
-                    <div className="text-xs text-neutral-300 font-editorial-sans truncate">
+                    <div className="text-xs text-neutral-200 font-editorial-sans truncate">
                       Director of Kinematics · 12 Yrs
                     </div>
                   </div>
@@ -299,13 +320,13 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
               </div>
 
               {/* Immediate Booking Callout in Shibui Craft */}
-              <div className="bg-[#181816]/90 backdrop-blur-md text-[#F9F8F5] rounded-2xl p-3.5 border border-[#C59E5F]/50 real-shadow-md flex items-center justify-between gap-3">
+              <div className="bg-[#181816]/82 backdrop-blur-md text-[#F9F8F5] rounded-2xl p-3.5 border border-[#FFF04B]/70 real-shadow-lg shadow-black/25 flex items-center justify-between gap-3">
                 <div className="flex items-center gap-2.5">
-                  <div className="w-9 h-9 rounded-xl bg-[#C59E5F]/20 text-[#DFBA73] flex items-center justify-center shrink-0 border border-[#C59E5F]/30">
+                  <div className="w-9 h-9 rounded-xl bg-[#FFF04B]/15 text-[#FFF04B] flex items-center justify-center shrink-0 border border-[#FFF04B]/30">
                     <Calendar size={16} />
                   </div>
                   <div>
-                    <div className="text-[9px] font-clinical-mono font-bold uppercase tracking-wider text-[#C59E5F]">
+                    <div className="text-[9px] font-clinical-mono font-bold uppercase tracking-wider text-[#FFF04B]">
                       Next Available Session
                     </div>
                     <div className="text-sm font-bold font-clinical-mono text-white">
@@ -317,7 +338,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
                 <button
                   type="button"
                   onClick={() => onStartAssessment(selectedJoint)}
-                  className="bg-[#C59E5F] hover:bg-[#DFBA73] text-[#181816] px-3.5 py-2 rounded-xl text-xs font-bold font-clinical-mono uppercase tracking-wider flex items-center gap-1 cursor-pointer transition-all hover:scale-105 active:scale-95"
+                  className="bg-[#FFF04B] hover:bg-[#FFF79A] text-[#181816] px-3.5 py-2 rounded-xl text-xs font-bold font-clinical-mono uppercase tracking-wider flex items-center gap-1 cursor-pointer transition-all hover:scale-105 active:scale-95"
                 >
                   <span>Book</span>
                   <ArrowRight size={12} />
@@ -329,9 +350,9 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
           </div>
 
           {/* Bottom Trust Indicators Strip inside the Framed Hero */}
-          <div className="mt-6 pt-4 border-t border-white/10 grid grid-cols-2 sm:grid-cols-4 gap-3 text-xs font-clinical-mono text-neutral-300">
+          <div className="mt-6 pt-4 border-t border-white/10 grid grid-cols-2 sm:grid-cols-4 gap-3 text-xs font-clinical-mono text-neutral-200">
             <div className="flex items-center gap-2">
-              <Star size={14} className="fill-[#DFBA73] text-[#DFBA73] shrink-0" />
+              <Star size={14} className="fill-[#FFF04B] text-[#FFF04B] shrink-0" />
               <span>
                 <strong className="text-white">4.96/5.0</strong> (2,840+ Outcomes)
               </span>
@@ -343,7 +364,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
               </span>
             </div>
             <div className="flex items-center gap-2">
-              <UserCheck size={14} className="text-[#DFBA73] shrink-0" />
+              <UserCheck size={14} className="text-[#FFF04B] shrink-0" />
               <span>
                 <strong className="text-white">60-Min</strong> 1-on-1 Doctoral Care
               </span>
@@ -511,11 +532,11 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
                 {/* The Big Kinetic "FIND CARE" Button in Shibui Craft */}
                 <button
                   type="submit"
-                  className="bg-[#181816] hover:bg-[#252522] text-[#F9F8F5] font-semibold text-xs uppercase tracking-wider px-6 py-3.5 rounded-2xl transition-all duration-150 real-shadow-sm hover:real-shadow-md flex items-center justify-center gap-2 shrink-0 cursor-pointer border border-[#C59E5F] hover:border-[#DFBA73] hover:scale-105 active:scale-95"
+                  className="bg-[#FFF04B] hover:bg-[#FFF79A] text-[#181816] font-semibold text-xs uppercase tracking-wider px-6 py-3.5 rounded-2xl transition-all duration-150 real-shadow-sm hover:real-shadow-md flex items-center justify-center gap-2 shrink-0 cursor-pointer border border-[#FFF04B] hover:border-[#FFF79A] hover:scale-105 active:scale-95"
                 >
-                  <Search size={15} className="text-[#DFBA73]" />
+                  <Search size={15} className="text-[#181816]" />
                   <span className="font-clinical-mono">FIND CARE</span>
-                  <ArrowRight size={14} className="text-[#C59E5F]" />
+                  <ArrowRight size={14} className="text-[#181816]" />
                 </button>
 
               </div>
@@ -559,19 +580,19 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
       </div>
 
       {/* 🛑 ARCHITECTURAL FLAGSHIP LABS FOOTER BANNER 🛑 */}
-      <div className="relative z-10 bg-neutral-950/95 backdrop-blur-md text-neutral-300 py-3 text-xs font-clinical-mono border-t border-white/10 real-shadow-md">
+      <div className="relative z-10 bg-neutral-950/95 backdrop-blur-md text-neutral-200 py-3 text-xs font-clinical-mono border-t border-white/10 real-shadow-md">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row md:items-center justify-between gap-2 text-[11px]">
           <div className="flex items-center gap-2 flex-wrap">
             <span className="text-emerald-400 font-bold">✓</span>
             <span className="text-white font-bold tracking-wider uppercase">
               FLAGSHIP MOTION LABS:
             </span>
-            <span className="text-neutral-300">
+            <span className="text-neutral-200">
               Mumbai (Bandra) · Bengaluru (Indiranagar) · New Delhi (Vasant Vihar) · London (Mayfair)
             </span>
           </div>
 
-          <div className="flex items-center gap-3 text-neutral-400 flex-wrap">
+          <div className="flex items-center gap-3 text-neutral-300 flex-wrap">
             <span>Star Health · HDFC ERGO · ICICI Lombard · Bupa</span>
             <span className="text-emerald-400 font-semibold">100% Cashless TPA Approved</span>
           </div>

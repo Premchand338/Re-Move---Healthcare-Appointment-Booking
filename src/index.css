@@ -1,7 +1,16 @@
 @import "tailwindcss";
 
 @layer base {
+  *,
+  *::before,
+  *::after {
+    border-radius: 0 !important;
+  }
+
   :root {
+    --section-pad-y: clamp(4rem, 6vw, 7rem);
+    --section-pad-x: clamp(1rem, 2vw, 2rem);
+    --content-gap: clamp(1.25rem, 2vw, 2rem);
     --font-serif: 'Shippori Mincho', 'Newsreader', Georgia, serif;
     --font-display-serif: 'Instrument Serif', 'Shippori Mincho', Georgia, serif;
     --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
@@ -26,6 +35,20 @@
     background-color: #F9F8F5;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
+  }
+
+  main > section {
+    padding-top: var(--section-pad-y);
+    padding-bottom: var(--section-pad-y);
+  }
+
+  main > section > div {
+    gap: var(--content-gap);
+  }
+
+  .max-w-7xl {
+    padding-left: var(--section-pad-x);
+    padding-right: var(--section-pad-x);
   }
 }
 

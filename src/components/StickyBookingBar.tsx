@@ -38,17 +38,10 @@ export const StickyBookingBar: React.FC<StickyBookingBarProps> = ({ specialist, 
           </div>
         </div>
 
+        {/* Removed - no backend support yet, see backend simplification plan */}
+        {/* Removed - no backend support yet, see backend simplification plan */}
         {/* Center: Timing & Co-pay info */}
-        <div className="hidden md:flex items-center gap-6 text-xs font-clinical-mono border-x border-neutral-200 px-6 shrink-0">
-          <div>
-            <div className="text-[10px] uppercase text-neutral-500 font-bold">NEXT OPEN SLOT</div>
-            <div className="font-bold text-neutral-900">TOMORROW · 6:30 PM</div>
-          </div>
-          <div>
-            <div className="text-[10px] uppercase text-neutral-500 font-bold">EST. IN-NETWORK</div>
-            <div className="font-bold text-emerald-700">₹{specialist.cashlessCopay} Co-pay</div>
-          </div>
-        </div>
+        {/* <div className="hidden md:flex items-center gap-6 text-xs font-clinical-mono border-x border-neutral-200 px-6 shrink-0"><div><div className="text-[10px] uppercase text-neutral-500 font-bold">NEXT OPEN SLOT</div><div className="font-bold text-neutral-900">TOMORROW · 6:30 PM</div></div><div><div className="text-[10px] uppercase text-neutral-500 font-bold">EST. IN-NETWORK</div><div className="font-bold text-emerald-700">₹{specialist.cashlessCopay} Co-pay</div></div></div> */}
 
         {/* Right: Quick Action & Dismiss */}
         <div className="flex items-center gap-2 shrink-0">

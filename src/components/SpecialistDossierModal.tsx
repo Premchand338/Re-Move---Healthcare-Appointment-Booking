@@ -78,32 +78,13 @@ export const SpecialistDossierModal: React.FC<SpecialistDossierModalProps> = ({
             </div>
           </div>
 
+          {/* Removed - no backend support yet, see backend simplification plan */}
           {/* Clinical Philosophy Quote */}
-          <div className="p-4 rounded-2xl bg-[#FFFDF0] border border-amber-200">
-            <div className="flex items-center gap-2 text-[11px] font-clinical-mono uppercase tracking-widest text-amber-900 font-bold mb-1.5">
-              <Volume2 size={13} className="text-amber-600" />
-              Doctor Philosophy & Bedside Approach
-            </div>
-            <p className="font-editorial-serif text-base text-neutral-900 italic leading-relaxed">
-              "{specialist.audioQuote}"
-            </p>
-          </div>
+          {/* <div className="p-4 rounded-2xl bg-[#FFFDF0] border border-amber-200"><div className="flex items-center gap-2 text-[11px] font-clinical-mono uppercase tracking-widest text-amber-900 font-bold mb-1.5"><Volume2 size={13} className="text-amber-600" />Doctor Philosophy & Bedside Approach</div><p className="font-editorial-serif text-base text-neutral-900 italic leading-relaxed">"{specialist.audioQuote}"</p></div> */}
 
+          {/* Removed - no backend support yet, see backend simplification plan */}
           {/* Academic Pedigree & Board Specializations */}
-          <div>
-            <h4 className="text-xs font-clinical-mono uppercase tracking-wider text-neutral-900 font-bold mb-3 flex items-center gap-1.5">
-              <Award size={14} className="text-amber-500" />
-              Academic Credentials & Certifications
-            </h4>
-            <div className="space-y-2">
-              {specialist.education.map((edu, idx) => (
-                <div key={idx} className="flex items-start gap-2.5 p-3 bg-[#FAFAF8] border border-neutral-200 rounded-xl text-xs text-neutral-800">
-                  <ShieldCheck size={15} className="text-emerald-600 shrink-0 mt-0.5" />
-                  <span className="font-medium text-neutral-900">{edu}</span>
-                </div>
-              ))}
-            </div>
-          </div>
+          {/* <div><h4 className="text-xs font-clinical-mono uppercase tracking-wider text-neutral-900 font-bold mb-3 flex items-center gap-1.5"><Award size={14} className="text-amber-500" />Academic Credentials & Certifications</h4><div className="space-y-2">{specialist.education.map((edu, idx) => (<div key={idx} className="flex items-start gap-2.5 p-3 bg-[#FAFAF8] border border-neutral-200 rounded-xl text-xs text-neutral-800"><ShieldCheck size={15} className="text-emerald-600 shrink-0 mt-0.5" /><span className="font-medium text-neutral-900">{edu}</span></div>))}</div></div> */}
 
           {/* Movement Lab Equipment */}
           <div>
@@ -130,23 +111,9 @@ export const SpecialistDossierModal: React.FC<SpecialistDossierModalProps> = ({
             </div>
           </div>
 
+          {/* Removed - no backend support yet, see backend simplification plan */}
           {/* Published Clinical Research */}
-          <div>
-            <h4 className="text-xs font-clinical-mono uppercase tracking-wider text-neutral-900 font-bold mb-3 flex items-center gap-1.5">
-              <BookOpen size={14} className="text-neutral-500" />
-              Peer-Reviewed Publications & Articles
-            </h4>
-            <div className="space-y-2">
-              {specialist.publishedResearch.map((paper, idx) => (
-                <div key={idx} className="p-3 bg-[#FAFAF8] border border-neutral-200 rounded-xl text-xs font-editorial-sans text-neutral-700">
-                  <span className="font-semibold text-neutral-900 block mb-0.5">«{paper.split('(')[0].trim()}»</span>
-                  <span className="text-[11px] font-clinical-mono text-neutral-500">
-                    ({paper.split('(')[1]}
-                  </span>
-                </div>
-              ))}
-            </div>
-          </div>
+          {/* <div><h4 className="text-xs font-clinical-mono uppercase tracking-wider text-neutral-900 font-bold mb-3 flex items-center gap-1.5"><BookOpen size={14} className="text-neutral-500" />Peer-Reviewed Publications & Articles</h4><div className="space-y-2">{specialist.publishedResearch.map((paper, idx) => (<div key={idx} className="p-3 bg-[#FAFAF8] border border-neutral-200 rounded-xl text-xs font-editorial-sans text-neutral-700"><span className="font-semibold text-neutral-900 block mb-0.5">«{paper.split('(')[0].trim()}»</span><span className="text-[11px] font-clinical-mono text-neutral-500">({paper.split('(')[1]}</span></div>))}</div></div> */}
         </div>
 
         {/* Bottom Booking Action */}
@@ -155,9 +122,8 @@ export const SpecialistDossierModal: React.FC<SpecialistDossierModalProps> = ({
             <div className="text-[11px] font-clinical-mono text-neutral-500 uppercase font-semibold">Consultation Fee</div>
             <div className="text-base font-bold text-neutral-900 font-clinical-mono">
               ₹{specialist.consultationFee.toLocaleString()}{' '}
-              <span className="text-xs text-neutral-500 font-normal">
-                (In-Network Co-pay: <strong className="text-emerald-700 font-bold">₹{specialist.cashlessCopay}</strong>)
-              </span>
+              {/* Removed - no backend support yet, see backend simplification plan */}
+              {/* <span className="text-xs text-neutral-500 font-normal">(In-Network Co-pay: <strong className="text-emerald-700 font-bold">₹{specialist.cashlessCopay}</strong>)</span> */}
             </div>
           </div>
 

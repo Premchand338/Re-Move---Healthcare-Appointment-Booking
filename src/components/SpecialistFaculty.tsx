@@ -232,21 +232,11 @@ export const SpecialistFaculty: React.FC<SpecialistFacultyProps> = ({
                     </div>
                   </div>
 
+{/* Removed - no backend support yet, see backend simplification plan */}
                   {/* Audio Introduction Snippet */}
-                  <div className="mb-4 bg-[#F9F8F5] border border-[#E5E1D8] rounded-2xl p-2.5 flex items-center justify-between gap-2">
-                    <button
-                      onClick={() => toggleAudio(specialist.id)}
-                      className={`flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-clinical-mono transition-all cursor-pointer font-bold ${
-                        isPlaying
-                          ? 'bg-[#3E5647] text-white'
-                          : 'bg-[#181816] text-[#F9F8F5] hover:bg-[#2A2A26] border border-[#C59E5F]'
-                      }`}
-                    >
-                      {isPlaying ? <Pause size={12} /> : <Play size={12} className="ml-0.5 text-[#DFBA73]" />}
-                      <span>{isPlaying ? 'PAUSE' : `Listen 0:${specialist.audioIntroSeconds}`}</span>
-                    </button>
+                  {/* <div className="mb-4 bg-[#F9F8F5] border border-[#E5E1D8] rounded-2xl p-2.5 flex items-center justify-between gap-2"><button onClick={() => toggleAudio(specialist.id)} className={`flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-clinical-mono transition-all cursor-pointer font-bold ${isPlaying ? 'bg-[#3E5647] text-white' : 'bg-[#181816] text-[#F9F8F5] hover:bg-[#2A2A26] border border-[#C59E5F]'} `}>{isPlaying ? <Pause size={12} /> : <Play size={12} className="ml-0.5 text-[#DFBA73]" />}<span>{isPlaying ? 'PAUSE' : `Listen 0:${specialist.audioIntroSeconds}`}</span></button></div> */}
 
-                    <div className="flex-1 flex flex-col justify-center min-w-0">
+                    {/* <div className="flex-1 flex flex-col justify-center min-w-0">
                       <span className="text-[10px] font-clinical-mono text-neutral-600 truncate font-semibold">
                         {isPlaying ? 'Clinical Philosophy Voice Note' : 'Doctor introduction & rationale'}
                       </span>
@@ -258,10 +248,10 @@ export const SpecialistFaculty: React.FC<SpecialistFacultyProps> = ({
                           />
                         </div>
                       )}
-                    </div>
+                    </div> */}
 
-                    <Volume2 size={14} className="text-neutral-500 shrink-0" />
-                  </div>
+                    {/* <Volume2 size={14} className="text-neutral-500 shrink-0" />
+                  </div> */}
 
                   {/* Clinical Focus Badges */}
                   <div className="space-y-1.5 mb-4">
@@ -273,8 +263,9 @@ export const SpecialistFaculty: React.FC<SpecialistFacultyProps> = ({
                     ))}
                   </div>
 
+                  {/* Removed - no backend support yet, see backend simplification plan */}
                   {/* Pricing and Co-pay Breakdown */}
-                  <div className="py-2.5 px-3 bg-neutral-50 border border-neutral-200 rounded-2xl flex items-center justify-between text-xs mb-5 font-clinical-mono">
+                  {/* <div className="py-2.5 px-3 bg-neutral-50 border border-neutral-200 rounded-2xl flex items-center justify-between text-xs mb-5 font-clinical-mono">
                     <span className="text-neutral-500">Regular Fee:</span>
                     <div className="text-right">
                       <span className="text-neutral-400 line-through mr-1.5">₹{specialist.consultationFee.toLocaleString()}</span>
@@ -282,7 +273,7 @@ export const SpecialistFaculty: React.FC<SpecialistFacultyProps> = ({
                         Cashless Co-pay: <strong className="text-emerald-700 font-black text-sm">₹{specialist.cashlessCopay}</strong>
                       </span>
                     </div>
-                  </div>
+                  </div> */}
                 </div>
 
                 {/* Slots & Booking Action */}

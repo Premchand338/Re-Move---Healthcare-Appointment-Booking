@@ -45,9 +45,9 @@ export const SymptomLocalization: React.FC<SymptomLocalizationProps> = ({
               Point to where it hurts. We uncover the mechanical root.
             </h2>
 
-            <p className="mt-3.5 text-base sm:text-lg text-neutral-600 font-editorial-sans leading-relaxed">
+            {/* <p className="mt-3.5 text-base sm:text-lg text-neutral-600 font-editorial-sans leading-relaxed">
               No medical prescription or prior MRI scan needed. Interact with the 3D biomechanical model below or select your symptomatic joint to match directly with Board-Certified Orthopedic DPTs.
-            </p>
+            </p> */}
           </div>
 
           <div className="flex items-center gap-2 font-clinical-mono text-xs text-neutral-600 bg-[#FAFAF8] px-4 py-2.5 rounded-2xl border border-neutral-200 shrink-0">
@@ -153,7 +153,7 @@ export const SymptomLocalization: React.FC<SymptomLocalizationProps> = ({
               </div>
 
               {/* Clinical Evidence Focus Block */}
-              <div className="mt-5 p-4 rounded-2xl bg-[#FFFDF0] border border-amber-200 text-neutral-800">
+              {/* <div className="mt-5 p-4 rounded-2xl bg-[#FFFDF0] border border-amber-200 text-neutral-800">
                 <div className="flex items-center justify-between mb-2">
                   <span className="font-clinical-mono text-[10px] uppercase tracking-widest text-amber-900 font-extrabold flex items-center gap-1.5">
                     <BookOpen size={13} className="text-amber-700" />
@@ -172,7 +172,7 @@ export const SymptomLocalization: React.FC<SymptomLocalizationProps> = ({
                     {activeData.successRate}
                   </span>
                 </div>
-              </div>
+              </div> */}
             </div>
 
             {/* Primary Action Button for this Region */}
@@ -186,13 +186,13 @@ export const SymptomLocalization: React.FC<SymptomLocalizationProps> = ({
                 <ChevronRight size={16} className="text-[#DFBA73] transition-transform group-hover:translate-x-1" />
               </button>
               
-              <div className="flex items-center justify-between text-[11px] font-clinical-mono text-neutral-500 mt-3 px-1">
+              {/* <div className="flex items-center justify-between text-[11px] font-clinical-mono text-neutral-500 mt-3 px-1">
                 <span>✓ Direct cashless claims</span>
                 <span>·</span>
                 <span>✓ 60-min doctoral consult</span>
                 <span>·</span>
                 <span>✓ Today slots open</span>
-              </div>
+              </div> */}
             </div>
 
           </div>

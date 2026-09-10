@@ -25,17 +25,21 @@ export interface Specialist {
   rating: number;
   reviewsCount: number;
   consultationFee: number;
-  cashlessCopay: number;
+  // Removed - no backend support yet, see backend simplification plan
+  // cashlessCopay: number;
   matchScore: number;
   matchReasons: string[];
-  audioIntroSeconds: number;
-  audioQuote: string;
+  // Removed - no backend support yet, see backend simplification plan
+  // audioIntroSeconds: number;
+  // audioQuote: string;
   avatarUrl: string;
   focusTags: string[];
   availableSlots: string[];
-  education: string[];
+  // Removed - no backend support yet, see backend simplification plan
+  // education: string[];
   clinicalFocus: string;
-  publishedResearch: string[];
+  // Removed - no backend support yet, see backend simplification plan
+  // publishedResearch: string[];
   clinicLocation: string;
 }
 

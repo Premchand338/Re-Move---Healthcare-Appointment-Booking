@@ -1,6 +1,7 @@
 import React from 'react';
 import { CLINICAL_STANDARDS } from '../data/clinicalData';
 import { GraduationCap, Activity, ShieldCheck, ArrowRight, CheckCircle2, Star } from 'lucide-react';
+import evidenceImage from '../../public/assets/aistudio/physio-evidence.svg';
 
 interface ClinicalStandardsProps {
   onStartAssessment: () => void;
@@ -34,10 +35,9 @@ export const ClinicalStandards: React.FC<ClinicalStandardsProps> = ({ onStartAss
           <h2 className="font-editorial-serif text-3xl sm:text-4xl md:text-5xl font-normal tracking-tight text-neutral-900 leading-[1.12]">
             Evidence over opinion. Results over guesswork.
           </h2>
-
-          <p className="mt-3.5 text-base sm:text-lg text-neutral-600 font-editorial-sans leading-relaxed">
+          {/* <p className="mt-3.5 text-base sm:text-lg text-neutral-600 font-editorial-sans leading-relaxed">
             We replaced rushed 15-minute consultations with measured 3D biomechanics, transparent cashless pricing, and 60 uninterrupted minutes with Board-Certified Doctors of Physical Therapy.
-          </p>
+          </p> */}
         </div>
 
         {/* 3 Columns Grid System */}
@@ -74,7 +74,7 @@ export const ClinicalStandards: React.FC<ClinicalStandardsProps> = ({ onStartAss
         </div>
 
         {/* High-Conversion Kinetic Callout Banner */}
-        <div className="bg-white border border-[#E5E1D8] rounded-3xl p-8 sm:p-12 text-center max-w-3xl mx-auto real-shadow-xl relative overflow-hidden">
+        {/* <div className="bg-white border border-[#E5E1D8] rounded-3xl p-8 sm:p-12 text-center max-w-3xl mx-auto real-shadow-xl relative overflow-hidden">
           <div className="absolute top-3 left-3 text-neutral-300 font-clinical-mono text-xs select-none">
             +
           </div>
@@ -105,7 +105,7 @@ export const ClinicalStandards: React.FC<ClinicalStandardsProps> = ({ onStartAss
           <p className="text-xs font-clinical-mono text-[#7A766E] mt-4">
             100% Cashless In-Network TPA claims available on site
           </p>
-        </div>
+        </div> */}
 
       </div>
     </section>

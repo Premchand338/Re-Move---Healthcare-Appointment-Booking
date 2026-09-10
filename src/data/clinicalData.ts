@@ -129,30 +129,34 @@ export const SPECIALISTS_DATA: Specialist[] = [
     rating: 4.9,
     reviewsCount: 186,
     consultationFee: 1840,
-    cashlessCopay: 350,
+    // Removed - no backend support yet, see backend simplification plan
+    // cashlessCopay: 350,
     matchScore: 98,
     matchReasons: [
       'Doctor of Physical Therapy (Univ. of Southern California)',
       '11+ years specialized knee & running kinetic rehabilitation',
       'Consultant to Olympic track & distance runners'
     ],
-    audioIntroSeconds: 18,
-    audioQuote:
-      'We do not treat MRIs in isolation. We analyze how your foot strike, hip rotation, and trunk control interact to resolve knee pain permanently.',
+    // Removed - no backend support yet, see backend simplification plan
+    // audioIntroSeconds: 18,
+    // audioQuote:
+    //   'We do not treat MRIs in isolation. We analyze how your foot strike, hip rotation, and trunk control interact to resolve knee pain permanently.',
     avatarUrl: 'https://images.unsplash.com/photo-1594824813681-ef0e8b15d2a7?auto=format&fit=crop&w=400&q=80',
     focusTags: ['Lumbar rehabilitation', 'Running injuries', 'Strength & conditioning', 'Post-ACL return to sport'],
     availableSlots: ['5:30 PM', '6:30 PM', '7:15 PM'],
-    education: [
-      'Doctor of Physical Therapy (DPT) — University of Southern California',
-      'Board-Certified Clinical Specialist in Orthopedic Physical Therapy (OCS)',
-      'Certified Strength & Conditioning Specialist (CSCS)'
-    ],
+    // Removed - no backend support yet, see backend simplification plan
+    // education: [
+    //   'Doctor of Physical Therapy (DPT) — University of Southern California',
+    //   'Board-Certified Clinical Specialist in Orthopedic Physical Therapy (OCS)',
+    //   'Certified Strength & Conditioning Specialist (CSCS)'
+    // ],
     clinicalFocus:
       'Patellofemoral tracking disorders, high-speed deceleration force absorption, and kinematic running gait correction.',
-    publishedResearch: [
-      'Frontal Plane Projection Angle in Female Deceleration Tasks (JOSPT 2021)',
-      'Proximal Hip Abductor Torque and Patellar Tendon Strain Rates (BJSM 2023)'
-    ],
+    // Removed - no backend support yet, see backend simplification plan
+    // publishedResearch: [
+    //   'Frontal Plane Projection Angle in Female Deceleration Tasks (JOSPT 2021)',
+    //   'Proximal Hip Abductor Torque and Patellar Tendon Strain Rates (BJSM 2023)'
+    // ],
     clinicLocation: 'Bandra West Movement Lab, Mumbai / Tele-Rehab'
   },
   {
@@ -166,30 +170,34 @@ export const SPECIALISTS_DATA: Specialist[] = [
     rating: 4.9,
     reviewsCount: 214,
     consultationFee: 2016,
-    cashlessCopay: 400,
+    // Removed - no backend support yet, see backend simplification plan
+    // cashlessCopay: 400,
     matchScore: 95,
     matchReasons: [
       'Fellow of American Academy of Orthopaedic Manual Physical Therapists',
       'Advanced McKenzie (MDT) Diplomat in mechanical spinal diagnosis',
       'Pioneer in force plate axial load distribution'
     ],
-    audioIntroSeconds: 22,
-    audioQuote:
-      'Spinal rehabilitation is about teaching your deep stabilising musculature to decompress discs automatically during daily posture and heavy lifting.',
+    // Removed - no backend support yet, see backend simplification plan
+    // audioIntroSeconds: 22,
+    // audioQuote:
+    //   'Spinal rehabilitation is about teaching your deep stabilising musculature to decompress discs automatically during daily posture and heavy lifting.',
     avatarUrl: 'https://images.unsplash.com/photo-1622253692010-333f2da6031d?auto=format&fit=crop&w=400&q=80',
     focusTags: ['Spinal manipulation', 'Dry needling', 'Axial load progression', 'Disc herniation protocol'],
     availableSlots: ['4:30 PM', '5:30 PM', '6:30 PM'],
-    education: [
-      'Doctor of Physical Therapy (DPT) — Northwestern University',
-      'Fellowship in Orthopaedic Manual Physical Therapy (FAAOMPT)',
-      'MDT Credentialed Spine Specialist'
-    ],
+    // Removed - no backend support yet, see backend simplification plan
+    // education: [
+    //   'Doctor of Physical Therapy (DPT) — Northwestern University',
+    //   'Fellowship in Orthopaedic Manual Physical Therapy (FAAOMPT)',
+    //   'MDT Credentialed Spine Specialist'
+    // ],
     clinicalFocus:
       'Lumbar radiculopathy, mechanical directional preference assessment, thoracic kyphosis mobilizations, and return-to-deadlift clearance.',
-    publishedResearch: [
-      'Multifidus Motor Unit Recruitment Under Variable Axial Loads (Spine 2020)',
-      'Longitudinal Outcomes of Mechanical Diagnosis Therapy in Degenerative Disc Disease (Lancet Reh 2022)'
-    ],
+    // Removed - no backend support yet, see backend simplification plan
+    // publishedResearch: [
+    //   'Multifidus Motor Unit Recruitment Under Variable Axial Loads (Spine 2020)',
+    //   'Longitudinal Outcomes of Mechanical Diagnosis Therapy in Degenerative Disc Disease (Lancet Reh 2022)'
+    // ],
     clinicLocation: 'Indiranagar Spine & Sport, Bengaluru / Tele-Rehab'
   },
   {
@@ -203,34 +211,40 @@ export const SPECIALISTS_DATA: Specialist[] = [
     rating: 4.8,
     reviewsCount: 142,
     consultationFee: 1736,
-    cashlessCopay: 350,
+    // Removed - no backend support yet, see backend simplification plan
+    // cashlessCopay: 350,
     matchScore: 94,
     matchReasons: [
       'Masters in Neuromusculoskeletal Physiotherapy (King’s College London)',
       'Certified Mulligan Practitioner (CMP)',
       'Lead biomechanist for national swimming & tennis squads'
     ],
-    audioIntroSeconds: 19,
-    audioQuote:
-      'When your shoulder or hip is painful, the culprit is often two joints away. We map the entire movement chain to create pain-free movement.',
+    // Removed - no backend support yet, see backend simplification plan
+    // audioIntroSeconds: 19,
+    // audioQuote:
+    //   'When your shoulder or hip is painful, the culprit is often two joints away. We map the entire movement chain to create pain-free movement.',
     avatarUrl: 'https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=400&q=80',
     focusTags: ['Gait biomechanics', 'Patellar tendon loading', 'Hip preservation', 'Scapular rhythm restore'],
     availableSlots: ['6:00 PM', '6:30 PM', '7:30 PM'],
-    education: [
-      'MSc Neuromusculoskeletal Physiotherapy — King’s College London',
-      'BSc (Hons) Physiotherapy — Karolinska Institute, Sweden',
-      'Certified Mulligan Practitioner'
-    ],
+    // Removed - no backend support yet, see backend simplification plan
+    // education: [
+    //   'MSc Neuromusculoskeletal Physiotherapy — King’s College London',
+    //   'BSc (Hons) Physiotherapy — Karolinska Institute, Sweden',
+    //   'Certified Mulligan Practitioner'
+    // ],
     clinicalFocus:
       'Labral tear rehabilitation, femoroacetabular impingement (FAI), rotator cuff tendinopathy, and swimming stroke analysis.',
-    publishedResearch: [
-      'Scapulothoracic Upward Rotation Deficits in Overhead Athletes (AJSM 2022)',
-      'Hip Abductor Activation Ratios During Squatting Variations (Gait & Posture 2023)'
-    ],
+    // Removed - no backend support yet, see backend simplification plan
+    // publishedResearch: [
+    //   'Scapulothoracic Upward Rotation Deficits in Overhead Athletes (AJSM 2022)',
+    //   'Hip Abductor Activation Ratios During Squatting Variations (Gait & Posture 2023)'
+    // ],
     clinicLocation: 'Vasant Vihar Biomechanics Clinic, New Delhi / Tele-Rehab'
   }
 ];
 
+// Removed - no backend support yet, see backend simplification plan
+/*
 export const MODALITIES_DATA: Modality[] = [
   {
     id: 'manual-therapy',
@@ -331,7 +345,10 @@ export const MODALITIES_DATA: Modality[] = [
     ]
   }
 ];
-
+*/
+// 
+// Removed - no backend support yet, see backend simplification plan
+/*
 export const TRAJECTORY_STEPS: TrajectoryPhase[] = [
   {
     step: 'STEP 01',
@@ -404,6 +421,7 @@ export const TRAJECTORY_STEPS: TrajectoryPhase[] = [
     targetMetrics: 'Full discharge clearance · ACL-RSI / SIRAS score >80'
   }
 ];
+*/
 
 export const CLINICAL_STANDARDS = [
   {
@@ -432,6 +450,8 @@ export const CLINICAL_STANDARDS = [
   }
 ];
 
+// Removed - no backend support yet, see backend simplification plan
+/*
 export const CLINICS = [
   {
     city: 'Mumbai',
@@ -462,3 +482,4 @@ export const CLINICS = [
     timing: 'Mon – Fri: 8:00 AM – 7:00 PM'
   }
 ];
+*/

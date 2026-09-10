@@ -1,5 +1,6 @@
 import React from 'react';
-import { CLINICS } from '../data/clinicalData';
+// Removed - no backend support yet, see backend simplification plan
+// import { CLINICS } from '../data/clinicalData';
 import { MapPin, Phone, Clock, ShieldCheck } from 'lucide-react';
 
 interface FooterProps {
@@ -113,8 +114,9 @@ export const Footer: React.FC<FooterProps> = ({ onNavigateSection }) => {
           </div>
         </div>
 
+        {/* Removed - no backend support yet, see backend simplification plan */}
         {/* Flagship Clinics Detailed Directory */}
-        <div className="py-12 border-b border-neutral-800">
+        {/* <div className="py-12 border-b border-neutral-800">
           <div className="flex items-center gap-2 mb-6">
             <MapPin size={16} className="text-[#C59E5F]" />
             <span className="font-clinical-mono text-xs uppercase tracking-wider text-white font-bold">
@@ -150,7 +152,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigateSection }) => {
               </div>
             ))}
           </div>
-        </div>
+        </div> */}
 
         {/* Disclaimer and Legal Footer */}
         <div className="pt-8 flex flex-col md:flex-row items-center justify-between text-[11px] font-clinical-mono text-neutral-500 gap-4">

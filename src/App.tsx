@@ -19,6 +19,7 @@ import { StickyBookingBar } from './components/StickyBookingBar';
 import { AssessmentModal } from './components/AssessmentModal';
 import { SpecialistDossierModal } from './components/SpecialistDossierModal';
 import { ClinicalEvidenceModal } from './components/ClinicalEvidenceModal';
+import { ContactUs } from './components/ContactUs';
 
 export default function App() {
   const [selectedJoint, setSelectedJoint] = useState<JointId>('knee');
@@ -95,13 +96,19 @@ export default function App() {
         />
 
         {/* Section 3: Clinical Modalities & Peer-Reviewed Literature */}
-        <ClinicalModalities onOpenEvidence={handleOpenEvidence} />
+        {/* <ClinicalModalities onOpenEvidence={handleOpenEvidence} /> */}
 
         {/* Section 4: Rehabilitation Trajectory (5-Phase Progression Timeline) */}
-        <RehabilitationTrajectory />
+        {/* <RehabilitationTrajectory /> */}
 
         {/* Section 5: The Kinetic Standard in India & Worldwide */}
         <ClinicalStandards onStartAssessment={() => handleStartAssessment(selectedJoint)} />
+
+        <ContactUs
+          onNavigateHome={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+          onStartAssessment={(joint?: JointId) => handleStartAssessment(joint)}
+        />
+
       </main>
 
       {/* Architectural Dark Footer */}

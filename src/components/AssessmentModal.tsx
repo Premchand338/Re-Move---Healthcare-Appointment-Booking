@@ -165,10 +165,11 @@ export const AssessmentModal: React.FC<AssessmentModalProps> = ({
                   <span className="text-neutral-500">Appointment Time:</span>
                   <span className="font-bold text-neutral-900">Tomorrow · {assessment.selectedSlot}</span>
                 </div>
-                <div className="flex justify-between">
+                {/* Removed - no backend support yet, see backend simplification plan */}
+                {/* <div className="flex justify-between">
                   <span className="text-neutral-500">Estimated Co-pay:</span>
                   <span className="font-black text-emerald-700 text-sm">₹{currentSpecialist.cashlessCopay} (Instant Cashless TPA)</span>
-                </div>
+                </div> */}
               </div>
 
               <button
@@ -401,9 +402,10 @@ export const AssessmentModal: React.FC<AssessmentModalProps> = ({
                         <div className="text-xs text-neutral-400 line-through">
                           ₹{currentSpecialist.consultationFee}
                         </div>
-                        <div className="text-sm text-emerald-700 font-clinical-mono font-black">
+                        {/* Removed - no backend support yet, see backend simplification plan */}
+                        {/* <div className="text-sm text-emerald-700 font-clinical-mono font-black">
                           Co-pay: ₹{currentSpecialist.cashlessCopay}
-                        </div>
+                        </div> */}
                       </div>
                     </div>
 
