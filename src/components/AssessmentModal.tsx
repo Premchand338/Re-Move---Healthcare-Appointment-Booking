@@ -1,17 +1,17 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence, type Variants } from 'motion/react';
-import { JointId, Specialist, AssessmentState } from '../types';
+import { JointId, AssessmentState } from '../types';
 import { CLINICAL_JOINTS, SPECIALISTS_DATA } from '../data/clinicalData';
 import { X, Check, ArrowRight, ArrowLeft, Shield, Calendar, Clock, Sparkles } from 'lucide-react';
+import type { Therapist } from '../types/therapist';
 
 interface AssessmentModalProps {
   isOpen: boolean;
   onClose: () => void;
-  initialJoint?: JointId;
-  preselectedSpecialist?: Specialist | null;
+  initialJoint: JointId;
+  preselectedSpecialist: Therapist | null;  // Changed from Specialist to Therapist
   preselectedSlot?: string;
 }
-
 export const AssessmentModal: React.FC<AssessmentModalProps> = ({
   isOpen,
   onClose,

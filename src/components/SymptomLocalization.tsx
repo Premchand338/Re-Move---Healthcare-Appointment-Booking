@@ -28,7 +28,7 @@ export const SymptomLocalization: React.FC<SymptomLocalizationProps> = ({
   ];
 
   return (
-    <section id="symptom-localization" className="py-16 md:py-24 border-b border-neutral-200 bg-white">
+    <section id="symptom-localization" className="py-16 md:py-24 border-b border-neutral-200 bg-[#F9F8F5]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header with Elevated UX Typography */}
@@ -92,7 +92,7 @@ export const SymptomLocalization: React.FC<SymptomLocalizationProps> = ({
             </div>
 
             {/* Visualizer Canvas Card with Mathematical Border */}
-            <div className="bg-neutral-950 rounded-3xl border-2 border-neutral-900 overflow-hidden real-shadow-xl relative">
+            <div className="bg-neutral-950 rounded-3xl border-2 border-neutral-900 overflow-hidden relative">
               <BiomechanicalVisualizer
                 selectedJoint={selectedJoint}
                 onSelectJoint={onSelectJoint}
@@ -109,7 +109,7 @@ export const SymptomLocalization: React.FC<SymptomLocalizationProps> = ({
           </div>
 
           {/* Right Column: In-Depth Diagnostic Profile & Booking Affordance (5 cols) */}
-          <div className="lg:col-span-5 bg-[#FAFAF8] border-2 border-neutral-200 rounded-3xl p-6 sm:p-7 real-shadow-lg flex flex-col justify-between">
+          <div className="lg:col-span-5 bg-[#FAFAF8] border-2 border-neutral-200 rounded-3xl p-6 sm:p-7 flex flex-col justify-between">
             <div>
               {/* Category & Anatomical Subtitle */}
               <div className="flex items-center justify-between border-b border-neutral-200 pb-3.5 mb-4">
@@ -180,7 +180,7 @@ export const SymptomLocalization: React.FC<SymptomLocalizationProps> = ({
               <button
                 id={`start-assessment-${selectedJoint}`}
                 onClick={() => onStartAssessment(selectedJoint)}
-                className="w-full bg-[#181816] hover:bg-[#2A2A26] text-[#F9F8F5] py-3.5 px-5 rounded-2xl text-xs font-bold uppercase tracking-wider transition-all real-shadow-sm border border-[#C59E5F] hover:border-[#DFBA73] flex items-center justify-center gap-2 group cursor-pointer hover:scale-[1.01] active:scale-[0.99] hover:real-shadow-md"
+                className="w-full bg-[#181816]  text-[#F9F8F5] py-3.5 px-5 rounded-2xl text-xs font-bold uppercase tracking-wider transition-all border border-[#C59E5F] hover:border-[#DFBA73] hover:bg-[#ffff2b] flex items-center justify-center gap-2 group cursor-pointer hover:scale-[1.01] active:scale-[0.99] hover:real-shadow-md"
               >
                 <span className="font-clinical-mono">Book Specialists for {activeData.name.split('&')[0].trim()}</span>
                 <ChevronRight size={16} className="text-[#DFBA73] transition-transform group-hover:translate-x-1" />

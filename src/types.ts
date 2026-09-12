@@ -77,7 +77,7 @@ export interface AssessmentState {
   painScale: number;
   aggravatingFactor: string;
   primaryGoal: string;
-  selectedSpecialistId: string;
+  selectedSpecialistId: string | number ;
   selectedSlot: string;
   patientName: string;
   patientPhone: string;

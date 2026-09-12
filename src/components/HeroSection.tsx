@@ -7,6 +7,7 @@ import {
   ChevronRight, Layers, ArrowUpRight, Zap
 } from 'lucide-react';
 import heroPhysioImage from '../assets/images/hero.png';
+import { div } from 'motion/react-client';
 
 // CONTINUOUS ROTATING SERVICES AT KINETIC
 const KINETIC_SERVICES = [
@@ -271,7 +272,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
               {/* Value Proposition Description */}
               {/* <p className="text-sm sm:text-base text-neutral-300 font-editorial-sans leading-relaxed max-w-2xl">
                 Experience 60-minute one-on-one sessions exclusively with Board-Certified Doctors of Physical Therapy (DPTs). We diagnose your entire kinetic chain using 3D motion analysis, followed by verified cashless claims with Star Health, HDFC ERGO, ICICI Lombard & Bupa.
-              </p> */}
+              </p> */}  
 
             </div>
 
@@ -319,7 +320,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
                 </div>
               </div>
 
-              {/* Immediate Booking Callout in Shibui Craft */}
+    
               <div className="bg-[#181816]/82 backdrop-blur-md text-[#F9F8F5] rounded-2xl p-3.5 border border-[#FFF04B]/70 real-shadow-lg shadow-black/25 flex items-center justify-between gap-3">
                 <div className="flex items-center gap-2.5">
                   <div className="w-9 h-9 rounded-xl bg-[#FFF04B]/15 text-[#FFF04B] flex items-center justify-center shrink-0 border border-[#FFF04B]/30">
@@ -340,7 +341,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
                   onClick={() => onStartAssessment(selectedJoint)}
                   className="bg-[#FFF04B] hover:bg-[#FFF79A] text-[#181816] px-3.5 py-2 rounded-xl text-xs font-bold font-clinical-mono uppercase tracking-wider flex items-center gap-1 cursor-pointer transition-all hover:scale-105 active:scale-95"
                 >
-                  <span>Book</span>
+                  <span>Book Your Appointment</span>
                   <ArrowRight size={12} />
                 </button>
               </div>
@@ -544,7 +545,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
             </div>
 
             {/* Bottom Real-Time Verification Strip inside the Search Console */}
-            <div className="mt-3 pt-3 border-t border-neutral-200/90 flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 text-xs font-editorial-sans text-neutral-700">
+            {/* <div className="mt-3 pt-3 border-t border-neutral-200/90 flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 text-xs font-editorial-sans text-neutral-700">
               
               <div className="flex items-center gap-2.5 flex-wrap">
                 <span className="flex items-center gap-1 font-bold text-emerald-800">
@@ -573,31 +574,31 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
                 </button>
               </div>
 
-            </div>
+            </div> */}
           </form>
         </motion.div>
 
       </div>
 
       {/* 🛑 ARCHITECTURAL FLAGSHIP LABS FOOTER BANNER 🛑 */}
-      <div className="relative z-10 bg-neutral-950/95 backdrop-blur-md text-neutral-200 py-3 text-xs font-clinical-mono border-t border-white/10 real-shadow-md">
+      {/* <div className="relative z-10 bg-[#FFF04B] backdrop-blur-md text-[#181816] py-3 text-xs font-clinical-mono border-t border-white/10 real-shadow-md">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row md:items-center justify-between gap-2 text-[11px]">
           <div className="flex items-center gap-2 flex-wrap">
-            <span className="text-emerald-400 font-bold">✓</span>
-            <span className="text-white font-bold tracking-wider uppercase">
+            <span className="font-bold">✓</span>
+            <span className="font-bold tracking-wider uppercase">
               FLAGSHIP MOTION LABS:
             </span>
-            <span className="text-neutral-200">
+            <span className="text-[#181816]">
               Mumbai (Bandra) · Bengaluru (Indiranagar) · New Delhi (Vasant Vihar) · London (Mayfair)
             </span>
           </div>
 
-          <div className="flex items-center gap-3 text-neutral-300 flex-wrap">
+          <div className="flex items-center gap-3 flex-wrap">
             <span>Star Health · HDFC ERGO · ICICI Lombard · Bupa</span>
             <span className="text-emerald-400 font-semibold">100% Cashless TPA Approved</span>
           </div>
         </div>
-      </div>
+      </div> */}
 
     </section>
   );

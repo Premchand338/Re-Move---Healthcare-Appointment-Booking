@@ -1,22 +1,40 @@
 import React, { useState } from 'react';
-import { Globe, ArrowRight, Menu, X, ShieldCheck, CheckCircle2, Sparkles, Clock, MapPin } from 'lucide-react';
+import { useNavigate } from 'react-router-dom'; // ✅ Added useNavigate
+import { Globe, ArrowRight, Menu, X, ShieldCheck, CheckCircle2, Sparkles, Clock, MapPin, LogOut } from 'lucide-react';
 
 interface HeaderProps {
   onFindTherapist: () => void;
   onNavigateSection: (sectionId: string) => void;
+  onNavigateHome: () => void;
+  onLogin: () => void;
+  onRegister: () => void;
+  onLogout: () => void;
 }
 
-export const Header: React.FC<HeaderProps> = ({ onFindTherapist, onNavigateSection }) => {
+export const Header: React.FC<HeaderProps> = ({ 
+  onFindTherapist, 
+  onNavigateSection, 
+  onNavigateHome, 
+  onLogin, 
+  onRegister, 
+  onLogout 
+}) => {
+  const navigate = useNavigate(); // ✅ Initialize navigate
   const [currentLang, setCurrentLang] = useState<'EN' | 'HI'>('EN');
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [showLogoutMenu, setShowLogoutMenu] = useState(false);
   const [activeNav, setActiveNav] = useState<string>('kinetic-manifesto');
 
+  const token = localStorage.getItem('token');
+  const userEmail = localStorage.getItem('email');
+  const userRole = localStorage.getItem('role'); // ✅ Get user role
+  const isLoggedIn = Boolean(token);
+  const emailInitial = userEmail ? userEmail.trim().charAt(0).toUpperCase() : 'P';
+  const isAdmin = userRole === 'admin'; // ✅ Check if admin
+
   const navLinks = [
-    // { label: 'Kinetic Principle', id: 'kinetic-manifesto' },
     { label: 'Find Doctors', id: 'specialists' },
-    // { label: '3D Body Triage', id: 'symptom-localization' },
     { label: 'Treatments & Evidence', id: 'modalities' },
-    // { label: 'Recovery Milestones', id: 'trajectory' },
     { label: 'Clinical Standards', id: 'clinical-standards' },
     { label: 'Contact Us', id: 'contact-us' }
   ];
@@ -29,44 +47,18 @@ export const Header: React.FC<HeaderProps> = ({ onFindTherapist, onNavigateSecti
 
   return (
     <header className="sticky top-0 z-40 bg-[#F9F8F5]/95 backdrop-blur-md border-b border-[#E5E1D8] transition-all real-shadow-xs">
-      {/* Top subtle Japanese aesthetic advisory strip (Ma - Intentional Breathing Interval) */}
-      {/* <div className="hidden md:flex items-center justify-between px-6 py-1.5 bg-[#F2EFE8] border-b border-[#E5E1D8] text-[11px] font-clinical-mono text-[#4A4843]">
-        <div className="flex items-center gap-3">
-          <span className="flex items-center gap-1.5 text-[#2D4236] font-semibold bg-[#E7EFE9] px-2.5 py-0.5 rounded-full border border-[#B9D3C1]">
-            <CheckCircle2 size={12} className="text-[#3E5647]" />
-            DIRECT ACCESS · NO REFERRAL REQUIRED
-          </span>
-          <span className="text-[#5A5750]">
-            Cashless TPA with Star Health · HDFC ERGO · ICICI Lombard · Bupa Global
-          </span>
-        </div>
-
-        <div className="flex items-center gap-4 text-[#5A5750]">
-          <span className="flex items-center gap-1.5 font-medium">
-            <span className="w-2 h-2 rounded-full bg-[#3E5647] animate-pulse" />
-            Flagship Movement Labs: Mumbai · Bengaluru · Delhi · Tokyo
-          </span>
-          <span className="text-[#D3CEC4]">|</span>
-          <span className="font-semibold text-[#181816] flex items-center gap-1">
-            <Clock size={11} className="text-[#7A766E]" />
-            &lt; 15-Min Punctuality Guarantee
-          </span>
-        </div>
-      </div> */}
-
       {/* Main Navigation Bar */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-18 flex items-center justify-between">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-18 flex items-center justify-between gap-3">
         
-        {/* Brand Wordmark with Japanese Inkan / Hanko Seal Motif */}
+        {/* Brand Wordmark */}
         <a
-          href="#"
+          href="/"
           className="flex items-center gap-3 group cursor-pointer"
           onClick={(e) => {
             e.preventDefault();
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+            onNavigateHome();
           }}
         >
-          
           <div className="flex flex-col">
             <div className="flex items-baseline gap-1.5">
               <span className="font-editorial-serif text-2xl font-bold tracking-[0.18em] text-[#181816] group-hover:text-black transition-colors">
@@ -79,22 +71,21 @@ export const Header: React.FC<HeaderProps> = ({ onFindTherapist, onNavigateSecti
           </div>
         </a>
 
-        {/* Center Desktop Navigation with Ma (Calm Spatial Rhythm) */}
-        <nav className="hidden lg:flex items-center space-x-1 text-xs font-medium font-editorial-sans text-[#4A4843]">
+        {/* Center Desktop Navigation */}
+        <nav className="hidden lg:flex items-center space-x-1 text-xs font-medium font-editorial-sans text-[#4A4843] flex-nowrap whitespace-nowrap">
           {navLinks.map((link) => {
             const isActive = activeNav === link.id;
             return (
               <button
                 key={link.id}
                 onClick={() => handleNavClick(link.id)}
-                className={`relative px-3.5 py-2 rounded-lg text-xs tracking-wider transition-all duration-200 cursor-pointer group ${
+                className={`relative px-3.5 py-2 rounded-lg text-xs tracking-wider transition-all duration-200 cursor-pointer group whitespace-nowrap ${
                   isActive
                     ? 'text-[#181816] font-bold bg-[#FFF04B]'
                     : 'text-[#4A4843] hover:text-[#181816] hover:bg-[#EFECE3]/70'
                 }`}
               >
                 <span>{link.label}</span>
-                {/* Understated Kintsugi gold indicator */}
                 <span
                   className={`absolute bottom-1 left-3.5 right-3.5 h-[1.5px] rounded-full transition-all duration-200 ${
                     isActive
@@ -108,13 +99,19 @@ export const Header: React.FC<HeaderProps> = ({ onFindTherapist, onNavigateSecti
         </nav>
 
         {/* Right Action & Language Switcher */}
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-3 flex-nowrap whitespace-nowrap">
           
-          {/* Status Pill in Koke-iro (Moss Green) */}
-          {/* <div className="hidden xl:flex items-center gap-2 px-3 py-1.5 bg-[#E7EFE9] border border-[#B9D3C1] rounded-full text-[11px] font-clinical-mono text-[#2D4236] font-semibold">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#3E5647] animate-pulse" />
-            <span>CLINIC SESSIONS ACTIVE</span>
-          </div> */}
+          {/* ✅ ADMIN BUTTON (Only visible to admins) */}
+          {isAdmin && (
+            <button
+              onClick={() => navigate('/admin/therapists')}
+              className="hidden sm:flex items-center gap-2 px-4 py-2 rounded-full bg-[#181816] text-[#F9F8F5] text-[11px] font-clinical-mono font-bold uppercase tracking-wider hover:bg-[#2A2A26] transition-all cursor-pointer border border-[#C59E5F] hover:border-[#DFBA73]"
+              title="Manage Specialists"
+            >
+              <ShieldCheck size={14} className="text-[#C59E5F]" />
+              <span>Admin</span>
+            </button>
+          )}
 
           {/* Language Switcher Pill */}
           <div className="hidden sm:flex items-center gap-1 text-xs font-clinical-mono text-[#5A5750] bg-[#EFECE3] px-2 py-1 rounded-xl border border-[#E5E1D8] mx-3">
@@ -141,15 +138,65 @@ export const Header: React.FC<HeaderProps> = ({ onFindTherapist, onNavigateSecti
               HI
             </button>
           </div>
+          
+          {isLoggedIn ? (
+            <div className="relative flex items-center gap-2">
+              <button
+                onClick={() => setShowLogoutMenu((prev) => !prev)}
+                className="flex h-10 w-10 items-center justify-center rounded-full bg-[#FFF04B] text-[#181816] border border-[#181816] font-editorial-serif text-lg font-bold shadow-sm cursor-pointer hover:bg-[#F8E86B] transition-all"
+                aria-label="Open user menu"
+              >
+                {emailInitial}
+              </button>
 
-          {/* Shibui Restrained Primary Action Button */}
-          <button
-            onClick={onFindTherapist}
-            className="bg-[#181816] hover:bg-[#252522] text-[#F9F8F5] font-semibold text-xs tracking-wider px-5 sm:px-6 py-2.5 rounded-full transition-all duration-200 flex items-center gap-2 group cursor-pointer border border-[#C59E5F]/70 real-shadow-xs hover:border-[#C59E5F] hover:scale-[1.02] active:scale-[0.98] mx-3"
-          >
-            <span className="font-clinical-mono">Reserve Session</span>
-            <ArrowRight size={13} className="text-[#C59E5F] transition-transform group-hover:translate-x-0.5" />
-          </button>
+              {showLogoutMenu && (
+                <div className="absolute right-0 top-12 z-50 min-w-37.5 rounded-2xl border border-[#E5E1D8] bg-white p-2 shadow-xl">
+                  {/* ✅ Admin Link in Mobile/Dropdown Menu too */}
+                  {isAdmin && (
+                    <button
+                      onClick={() => {
+                        setShowLogoutMenu(false);
+                        navigate('/admin/therapists');
+                      }}
+                      className="w-full flex items-center gap-2 rounded-xl px-4 py-2.5 text-[#181816] font-clinical-mono text-[11px] font-bold uppercase tracking-wider hover:bg-[#EFECE3] transition-colors mb-1"
+                    >
+                      <ShieldCheck size={14} className="text-[#C59E5F]" />
+                      <span>Admin Dashboard</span>
+                    </button>
+                  )}
+                  
+                  <button
+                    onClick={() => {
+                      setShowLogoutMenu(false);
+                      onLogout();
+                    }}
+                    className="w-full flex items-center justify-center gap-2 rounded-xl bg-[#181816] px-4 py-2.5 text-[#F9F8F5] font-clinical-mono text-[11px] font-bold uppercase tracking-wider transition hover:bg-[#252522]"
+                  >
+                    <LogOut size={14} className="text-[#C59E5F]" />
+                    <span>Logout</span>
+                  </button>
+                </div>
+              )}
+            </div>
+          ) : (
+            <>
+              <button
+                onClick={onLogin}
+                className="bg-[#FFF04B] hover:bg-[#F8E86B] text-[#181816] font-semibold text-xs tracking-wider px-5 sm:px-6 py-2.5 rounded-full transition-all duration-200 flex items-center gap-2 group cursor-pointer border border-[#181816] real-shadow-xs hover:border-[#181816] hover:scale-[1.02] active:scale-[0.98] mx-3"
+              >
+                <span className="font-clinical-mono">Login</span>
+                <ArrowRight size={13} className="text-[#181816] transition-transform group-hover:translate-x-0.5" />
+              </button>
+
+              <button
+                onClick={onRegister}
+                className="bg-[#FFF04B] hover:bg-[#F8E86B] text-[#181816] font-semibold text-xs tracking-wider px-5 sm:px-6 py-2.5 rounded-full transition-all duration-200 flex items-center gap-2 group cursor-pointer border border-[#181816] real-shadow-xs hover:border-[#181816] hover:scale-[1.02] active:scale-[0.98] mx-3"
+              >
+                <span className="font-clinical-mono">Register</span>
+                <ArrowRight size={13} className="text-[#181816] transition-transform group-hover:translate-x-0.5" />
+              </button>
+            </>
+          )}
 
           {/* Mobile menu toggle */}
           <button
@@ -165,6 +212,20 @@ export const Header: React.FC<HeaderProps> = ({ onFindTherapist, onNavigateSecti
       {/* Mobile Menu Dropdown */}
       {mobileMenuOpen && (
         <div className="lg:hidden bg-white border-b border-neutral-200 px-4 py-4 space-y-2 font-editorial-sans text-sm real-shadow-md">
+          {/* ✅ Admin Link in Mobile Menu */}
+          {isAdmin && (
+            <button
+              onClick={() => {
+                setMobileMenuOpen(false);
+                navigate('/admin/therapists');
+              }}
+              className="w-full flex items-center gap-2 rounded-xl bg-[#181816] px-4 py-3 text-[#F9F8F5] font-clinical-mono text-xs font-bold uppercase tracking-wider transition hover:bg-[#252522]"
+            >
+              <ShieldCheck size={16} className="text-[#C59E5F]" />
+              <span>Admin Dashboard</span>
+            </button>
+          )}
+
           {navLinks.map((link) => {
             const isActive = activeNav === link.id;
             return (
@@ -181,6 +242,7 @@ export const Header: React.FC<HeaderProps> = ({ onFindTherapist, onNavigateSecti
               </button>
             );
           })}
+          
           <div className="pt-3 border-t border-neutral-200 flex items-center justify-between text-xs font-clinical-mono text-neutral-600 px-3">
             <span className="font-bold uppercase tracking-wider">Language Selection:</span>
             <div className="flex items-center gap-2">

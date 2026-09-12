@@ -9,7 +9,7 @@ export const RehabilitationTrajectory: React.FC = () => {
   // const currentStep = TRAJECTORY_STEPS[activeStepIndex];
 
   return (
-    <section id="trajectory" className="py-16 md:py-24 border-b border-neutral-200 bg-white">
+    <section id="trajectory" className="py-16 md:py-24 border-b border-neutral-200 bg-[#FAFAF8]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}

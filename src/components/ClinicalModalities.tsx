@@ -23,7 +23,7 @@ export const ClinicalModalities: React.FC<ClinicalModalitiesProps> = ({ onOpenEv
   };
 
   return (
-    <section id="modalities" className="py-16 md:py-24 border-b border-neutral-200 bg-white">
+    <section id="modalities" className="py-16 md:py-24 border-b border-neutral-200 bg-[#F9F8F5]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
