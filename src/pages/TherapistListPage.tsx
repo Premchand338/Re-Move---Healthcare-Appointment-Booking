@@ -1,17 +1,17 @@
 import { useState, useEffect } from 'react'
-import { api } from '../../lib/api'
-import type { Therapist } from '../../types/therapist'
-import { TherapistForm } from '../../components/TherapistForm'
+import { api } from '../lib/api'
+import type { Therapist } from '../types/therapist'
+import { TherapistForm } from '../components/TherapistForm'
 import { Plus, User, Star, CheckCircle2, X, Loader2 } from 'lucide-react'
 
-export function AdminTherapistListPage() {
+export function TherapistListPage() {
   const [therapists, setTherapists] = useState<Therapist[]>([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
 
   const [showForm, setShowForm] = useState(false)
   const [editingTherapist, setEditingTherapist] = useState<Therapist | null>(null)
-  const [deactivatingId, setDeactivatingId] = useState<number | null>(null)
+  const [deactivatingId, setDeactivatingId] = useState<string  | null>(null)
 
   const loadTherapists = () => {
     setLoading(true)

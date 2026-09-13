@@ -52,7 +52,7 @@
 
 
 export type Therapist = {
-  id: string
+  id: string | null
   fullName: string
   title: string | null
   degrees: string | null
