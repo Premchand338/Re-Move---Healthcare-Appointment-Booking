@@ -64,7 +64,7 @@ export function ContactUs({ onNavigateHome, onStartAssessment }: ContactUsProps)
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-          <section className="bg-white border-2 border-neutral-200 hover:border-neutral-950 rounded-3xl p-8 sm:p-10 real-shadow-sm hover:real-shadow-xl flex flex-col justify-between transition-all duration-150 group">
+          <section className="bg-white border-2 border-neutral-200 hover:border-[#181816] hover:-translate-y-1 rounded-3xl p-8 sm:p-10 real-shadow-sm hover:real-shadow-xl flex flex-col justify-between transition-all duration-150 group">
             <div className="flex items-center justify-between mb-6">
               <span className="inline-flex items-center justify-center w-12 h-12 rounded-2xl bg-[#F6EEDF] border border-[#C59E5F]/50 text-[#8C6D34]">
                 <ClipboardCheck size={22} />
@@ -108,7 +108,7 @@ export function ContactUs({ onNavigateHome, onStartAssessment }: ContactUsProps)
             </div>
           </section>
 
-          <section className="bg-[#FAFAF8] border-2 border-neutral-200 hover:border-neutral-950 rounded-3xl p-8 sm:p-10 real-shadow-sm hover:real-shadow-xl flex flex-col justify-between transition-all duration-150 group">
+          <section className="bg-[#FAFAF8] border-2 border-neutral-200 hover:border-[#181816] hover:-translate-y-1 rounded-3xl p-8 sm:p-10 real-shadow-sm hover:real-shadow-xl flex flex-col justify-between transition-all duration-150 group">
             <div className="flex items-center justify-between mb-6">
               <span className="inline-flex items-center justify-center w-12 h-12 rounded-2xl bg-white border border-[#E5E1D8] text-[#8C6D34]">
                 <Headphones size={22} />

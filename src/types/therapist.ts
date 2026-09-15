@@ -52,29 +52,29 @@
 
 
 export type Therapist = {
-  id: string | null
-  fullName: string
-  title: string | null
-  degrees: string | null
-  phone: string
-  email: string | null
-  specialization: string
-  category: string | null
-  bio: string | null
-  clinicalFocus: string | null
-  experienceYears: number | null
-  rating: string | null
-  reviewCount: number | null
-  pricePerSession: string | null
-  matchScore: string | null
-  matchReasons: string[]
-  avatarUrl: string | null
-  focusTags: string[]
-  availableSlots: string[]
-  clinicLocation: string | null
-  active: boolean
-  createdAt: string
-  updatedAt: string
+  id: string | number; // Accept both for flexibility
+  fullName: string;
+  title: string | null;
+  degrees: string | null;
+  phone: string;
+  email: string | null;
+  specialization: string;
+  category: string | null;
+  bio: string | null;
+  clinicalFocus: string | null;
+  experienceYears: number | null;
+  rating: number | string | null; // Accept both
+  reviewCount: number | null;
+  pricePerSession: number | string | null; // Accept both
+  matchScore: number | string | null; // Accept both
+  matchReasons: string[];
+  avatarUrl: string | null;
+  focusTags: string[];
+  availableSlots: string[];
+  clinicLocation: string | null;
+  active: boolean;
+  createdAt: string;
+  updatedAt: string;
 }
 
 export type TherapistInput = Partial<Omit<Therapist, 'id' | 'createdAt' | 'updatedAt' | 'active'>> & {

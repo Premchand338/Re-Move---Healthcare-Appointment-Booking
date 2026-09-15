@@ -4,10 +4,11 @@
   *,
   *::before,
   *::after {
-    border-radius: 0 !important;
+    border-radius: var(--soft-radius, 12px);
   }
 
   :root {
+    --soft-radius: 12px;
     --section-pad-y: clamp(4rem, 6vw, 7rem);
     --section-pad-x: clamp(1rem, 2vw, 2rem);
     --content-gap: clamp(1.25rem, 2vw, 2rem);

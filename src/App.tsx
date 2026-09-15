@@ -17,11 +17,13 @@ import { ClinicalStandards } from './components/ClinicalStandards';
 import { Footer } from './components/Footer';
 import { AssessmentModal } from './components/AssessmentModal';
 import { ClinicalEvidenceModal } from './components/ClinicalEvidenceModal';
+import { AboutUs } from './components/AboutUs';
 import { ContactUs } from './components/ContactUs';
 import { LoginPage } from './pages/LoginPage';
 import { RegisterPage } from './pages/RegisterPage';
 import { TherapistListPage } from './pages/TherapistListPage';
 import { ProtectedRoute } from './components/ProtectedRoute';
+import { StickyBookingBar } from './components/StickyBookingBar';
 
 function LandingExperience() {
   const [selectedJoint, setSelectedJoint] = useState<JointId>('knee');
@@ -89,9 +91,15 @@ function LandingExperience() {
           onBookAppointment={handleBookAppointment}
         />
 
-        <ClinicalModalities onOpenEvidence={handleOpenEvidence} />
+        {/* <ClinicalModalities onOpenEvidence={handleOpenEvidence} /> */}
 
         <ClinicalStandards onStartAssessment={() => handleStartAssessment(selectedJoint)} />
+
+        <AboutUs
+          onNavigateHome={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+          onNavigateContact={() => handleNavigateSection('contact-us')}
+          onStartAssessment={(joint?: JointId) => handleStartAssessment(joint)}
+        />
 
         <ContactUs
           onNavigateHome={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
@@ -100,6 +108,8 @@ function LandingExperience() {
       </main>
 
       <Footer onNavigateSection={handleNavigateSection} />
+      
+<StickyBookingBar onQuickBook={handleBookAppointment} />
 
       <AssessmentModal
         isOpen={isAssessmentOpen}

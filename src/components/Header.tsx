@@ -36,6 +36,7 @@ export const Header: React.FC<HeaderProps> = ({
     { label: 'Find Doctors', id: 'specialists' },
     { label: 'Treatments & Evidence', id: 'modalities' },
     { label: 'Clinical Standards', id: 'clinical-standards' },
+    { label: 'About Us', id: 'about-us' },
     { label: 'Contact Us', id: 'contact-us' }
   ];
 
@@ -156,7 +157,7 @@ export const Header: React.FC<HeaderProps> = ({
                     <button
                       onClick={() => {
                         setShowLogoutMenu(false);
-                        navigate('/admin/therapists');
+                        navigate('/therapists');
                       }}
                       className="w-full flex items-center gap-2 rounded-xl px-4 py-2.5 text-[#181816] font-clinical-mono text-[11px] font-bold uppercase tracking-wider hover:bg-[#EFECE3] transition-colors mb-1"
                     >
@@ -188,13 +189,13 @@ export const Header: React.FC<HeaderProps> = ({
                 <ArrowRight size={13} className="text-[#181816] transition-transform group-hover:translate-x-0.5" />
               </button>
 
-              <button
+              {/* <button
                 onClick={onRegister}
                 className="bg-[#FFF04B] hover:bg-[#F8E86B] text-[#181816] font-semibold text-xs tracking-wider px-5 sm:px-6 py-2.5 rounded-full transition-all duration-200 flex items-center gap-2 group cursor-pointer border border-[#181816] real-shadow-xs hover:border-[#181816] hover:scale-[1.02] active:scale-[0.98] mx-3"
               >
                 <span className="font-clinical-mono">Register</span>
                 <ArrowRight size={13} className="text-[#181816] transition-transform group-hover:translate-x-0.5" />
-              </button>
+              </button> */}
             </>
           )}
 

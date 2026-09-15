@@ -131,7 +131,7 @@ export function TherapistListPage() {
           {therapists.map((t) => (
             <div
               key={t.id}
-              className="bg-white border border-neutral-200 rounded-2xl p-5 flex flex-col justify-between transition-all duration-150 hover:border-neutral-400 hover:shadow-md"
+              className="bg-white border border-neutral-200 rounded-2xl p-5 flex flex-col justify-between transition-all duration-150 hover:border-[#181816] hover:-translate-y-1 hover:shadow-md"
             >
 
               {/* Specialist Info */}

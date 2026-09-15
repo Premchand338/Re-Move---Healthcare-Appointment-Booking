@@ -1,4 +1,5 @@
 import type { Therapist } from '../types/therapist'
+import { Calendar, CheckCircle2, Edit3, MapPin, PowerOff, Sparkles, Star } from 'lucide-react'
 
 type TherapistCardProps = {
   therapist: Therapist
@@ -15,15 +16,14 @@ export function TherapistCard({
   onDeactivate,
   deactivating,
 }: TherapistCardProps) {
+  const rating = therapist.rating ?? null
+  const reviewCount = therapist.reviewCount ?? 0
+
   return (
-    <article className="group bg-[#FAFAF8] hover:bg-white border-2 border-neutral-200 hover:border-neutral-950 hover:-translate-y-1 rounded-3xl p-6 shadow-sm hover:shadow-xl flex flex-col justify-between transition-all duration-150">
+    <article className="group bg-[#FAFAF8] hover:bg-white border-2 border-neutral-200 hover:border-[#181816] hover:-translate-y-1 rounded-3xl p-6 real-shadow-xs hover:real-shadow-xl flex flex-col justify-between transition-all duration-150">
       <div className="flex items-start gap-4">
-        {/* Avatar */}
         <img
-          src={
-            therapist.avatarUrl ||
-            'https://via.placeholder.com/80'
-          }
+          src={therapist.avatarUrl || 'https://via.placeholder.com/80'}
           alt={therapist.fullName}
           className="w-16 h-16 rounded-full object-cover border border-neutral-200"
         />
@@ -49,13 +49,12 @@ export function TherapistCard({
             {therapist.degrees}
           </p>
 
-          {/* Rating & Price */}
           <div className="flex items-center gap-3 mt-2 text-sm">
-            {therapist.rating != null && (
+            {rating != null && (
               <span className="flex items-center gap-1 text-amber-600 font-medium">
-                ★ {therapist.rating}
+                ★ {rating}
                 <span className="text-neutral-400 font-normal">
-                  ({therapist.reviewCount ?? 0})
+                  ({reviewCount})
                 </span>
               </span>
             )}
@@ -67,37 +66,22 @@ export function TherapistCard({
             )}
           </div>
 
-          {/* Focus Tags */}
-          {therapist.focusTags &&
-            therapist.focusTags.length > 0 && (
-              <div className="flex flex-wrap gap-1.5 mt-3">
-                {therapist.focusTags
-                  .slice(0, 3)
-                  .map((tag, idx) => (
-                    <span
-                      key={idx}
-                      className="text-[11px] bg-neutral-100 text-neutral-600 px-2 py-0.5 rounded-md border border-neutral-200"
-                    >
-                      {tag}
-                    </span>
-                  ))}
-              </div>
-            )}
+          {therapist.focusTags && therapist.focusTags.length > 0 && (
+            <div className="flex flex-wrap gap-1.5 mt-3">
+              {therapist.focusTags.slice(0, 3).map((tag, idx) => (
+                <span key={idx} className="text-[11px] bg-neutral-100 text-neutral-600 px-2 py-0.5 rounded-md border border-neutral-200">
+                  {tag}
+                </span>
+              ))}
+            </div>
+          )}
         </div>
       </div>
 
-      {/* Footer */}
       <div className="mt-4 pt-3 border-t border-neutral-100">
         <div className="flex items-center justify-between gap-3">
           <div className="flex items-center gap-2 min-w-0">
-            <span
-              className={`h-2 w-2 shrink-0 rounded-full ${
-                therapist.active
-                  ? 'bg-green-500'
-                  : 'bg-neutral-300'
-              }`}
-            />
-
+            <span className={`h-2 w-2 shrink-0 rounded-full ${therapist.active ? 'bg-green-500' : 'bg-neutral-300'}`}></span>
             <span className="text-xs text-neutral-500 truncate">
               {therapist.clinicLocation}
             </span>
@@ -113,7 +97,6 @@ export function TherapistCard({
           )}
         </div>
 
-        {/* Admin Actions */}
         {(onEdit || onDeactivate) && (
           <div className="mt-3 flex gap-2">
             {onEdit && (
@@ -131,9 +114,7 @@ export function TherapistCard({
                 disabled={deactivating}
                 className="flex-1 rounded-lg border border-red-200 px-3 py-2 text-xs font-bold text-red-600 hover:bg-red-50 disabled:opacity-50 transition-colors cursor-pointer"
               >
-                {deactivating
-                  ? 'Deactivating...'
-                  : 'Deactivate'}
+                {deactivating ? 'Deactivating...' : 'Deactivate'}
               </button>
             )}
           </div>

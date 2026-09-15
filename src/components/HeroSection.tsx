@@ -339,7 +339,8 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
                 <button
                   type="button"
                   onClick={() => onStartAssessment(selectedJoint)}
-                  className="bg-[#FFF04B] hover:bg-[#FFF79A] text-[#181816] px-3.5 py-2 rounded-xl text-xs font-bold font-clinical-mono uppercase tracking-wider flex items-center gap-1 cursor-pointer transition-all hover:scale-105 active:scale-95"
+                  
+                  className="bg-[#ffee34] hover:bg-[#181816] hover:text-[#FFF04B] hover:border-2 hover:border-[#181816] text-[#181816] px-3.5 py-2 rounded-xl text-xs font-bold font-clinical-mono uppercase tracking-wider flex items-center gap-1 cursor-pointer transition-all hover:scale-105 active:scale-95"
                 >
                   <span>Book Your Appointment</span>
                   <ArrowRight size={12} />

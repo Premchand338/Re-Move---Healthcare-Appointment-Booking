@@ -26,9 +26,7 @@ export function SpecialistFaculty({
 
   useEffect(() => {
     setLoading(true)
-
-    api
-      .get<Therapist[]>('/therapists')
+    api.get<Therapist[]>('/therapists')
       .then(setTherapists)
       .catch((err) => setError(err.message))
       .finally(() => setLoading(false))
@@ -55,97 +53,135 @@ export function SpecialistFaculty({
   }
 
   return (
-    <section
-      id="specialists"
-      className="py-16 px-6 bg-[#F7F4EA]"
-    >
+    <section id="specialists" className="py-16 px-6 bg-[#F7F4EA]">
       <div className="mx-auto max-w-6xl">
         <div className="flex items-end justify-between gap-6">
           <div>
             <span className="font-clinical-mono uppercase text-xs tracking-[0.24em] text-[#9B6A3D]">
               Section 02
             </span>
-
             <h2 className="mt-3 font-heading text-4xl font-bold tracking-tight text-neutral-900">
               Clinical Faculty
             </h2>
           </div>
-
           <span className="hidden md:block font-clinical-mono uppercase text-xs text-neutral-500">
             Matched Recovery Network
           </span>
         </div>
 
         <div className="mt-8 grid gap-6 md:grid-cols-3">
-          {therapists.map((t) => (
-            <article
-              key={t.id}
-              className="rounded-3xl border border-neutral-200 bg-white p-6 shadow-sm transition-all hover:shadow-md"
-            >
-              <div className="flex items-center gap-4">
-                <img
-                  src={
-                    t.avatarUrl ||
-                    'https://via.placeholder.com/80'
-                  }
-                  alt={t.fullName}
-                  className="h-16 w-16 rounded-full object-cover border border-neutral-200"
-                />
+          {therapists.map((t) => {
+            const matchScore = t.matchScore ? Number(t.matchScore) : null;
+            const hasStats = t.rating || t.reviewCount || t.experienceYears;
 
-                <div>
-                  <div className="font-heading text-lg font-bold text-neutral-950">
-                    {t.fullName}
+            return (
+              <article
+                key={t.id}
+                className="rounded-3xl border border-neutral-200 bg-white p-6 shadow-sm transition-all duration-150 hover:border-[#181816] hover:-translate-y-1 hover:shadow-md flex flex-col"
+              >
+                {matchScore != null && matchScore > 0 && (
+                  <div className="mb-3 inline-flex w-fit items-center gap-1.5 rounded-full bg-emerald-50 border border-emerald-200 px-3 py-1 text-[11px] font-bold text-emerald-800">
+                    {matchScore}% Match
                   </div>
+                )}
 
-                  <div className="font-clinical-mono text-[11px] uppercase text-neutral-500">
-                    {t.degrees}
+                <div className="flex items-center gap-4">
+                  <img
+                    src={t.avatarUrl || 'https://via.placeholder.com/80'}
+                    alt={t.fullName}
+                    className="h-16 w-16 rounded-full object-cover border border-neutral-200"
+                  />
+                  <div className="min-w-0">
+                    <div className="font-heading text-lg font-bold text-neutral-950">
+                      {t.fullName}
+                    </div>
+                    {t.degrees && (
+                      <div className="font-clinical-mono text-[11px] uppercase text-neutral-500">
+                        {t.degrees}
+                      </div>
+                    )}
                   </div>
                 </div>
-              </div>
 
-              <div className="mt-4 text-sm font-medium text-neutral-700">
-                {t.specialization}
-              </div>
+                <div className="mt-4 text-sm font-medium text-neutral-700">
+                  {t.specialization}
+                </div>
 
-              <div className="mt-4 flex flex-wrap gap-2">
-                {t.focusTags?.slice(0, 2).map((tag) => (
-                  <span
-                    key={tag}
-                    className="rounded-full border border-neutral-200 px-3 py-1 text-[10px] font-bold uppercase tracking-wide text-neutral-600"
+                {hasStats && (
+                  <div className="mt-2 flex flex-wrap items-center gap-1.5 text-xs font-clinical-mono text-neutral-600">
+                    {t.rating && (
+                      <span className="text-amber-600 font-bold">★ {t.rating}</span>
+                    )}
+                    {t.reviewCount != null && t.reviewCount > 0 && (
+                      <span className="text-neutral-400">({t.reviewCount} reviews)</span>
+                    )}
+                    {t.experienceYears != null && (
+                      <>
+                        <span className="text-neutral-300">·</span>
+                        <span>{t.experienceYears}y exp</span>
+                      </>
+                    )}
+                  </div>
+                )}
+
+                {t.clinicLocation && (
+                  <div className="mt-1 text-xs text-neutral-500">{t.clinicLocation}</div>
+                )}
+
+                {t.focusTags && t.focusTags.length > 0 && (
+                  <div className="mt-4 flex flex-wrap gap-2">
+                    {t.focusTags.map((tag) => (
+                      <span
+                        key={tag}
+                        className="rounded-full border border-neutral-200 px-3 py-1 text-[10px] font-bold uppercase tracking-wide text-neutral-600"
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                )}
+
+                {t.pricePerSession != null && (
+                  <div className="mt-4 text-sm font-clinical-mono text-neutral-800">
+                    ₹{t.pricePerSession} <span className="text-neutral-400 text-xs">/ session</span>
+                  </div>
+                )}
+
+                {t.availableSlots && t.availableSlots.length > 0 && (
+                  <div className="mt-3 flex flex-wrap gap-1.5">
+                    {t.availableSlots.slice(0, 4).map((slot) => (
+                      <span
+                        key={slot}
+                        className="rounded-lg border border-neutral-200 px-2.5 py-1 text-[11px] font-clinical-mono text-neutral-600"
+                      >
+                        {slot}
+                      </span>
+                    ))}
+                  </div>
+                )}
+
+                <div className="mt-auto pt-6 flex gap-3">
+                  <button
+                    className="rounded-full border border-neutral-900 px-4 py-2 text-xs font-bold uppercase text-neutral-900 hover:bg-neutral-900 hover:text-white transition-colors cursor-pointer"
+                    onClick={() => onOpenDossier(t)}
                   >
-                    {tag}
-                  </span>
-                ))}
-              </div>
-
-              <div className="mt-6 flex gap-3">
-                <button
-                  className="rounded-full border border-neutral-900 px-4 py-2 text-xs font-bold uppercase text-neutral-900 hover:bg-neutral-900 hover:text-white transition-colors cursor-pointer"
-                  onClick={() => onOpenDossier(t)}
-                >
-                  Dossier
-                </button>
-
-                <button
-                  className="rounded-full bg-[#16291F] px-4 py-2 text-xs font-bold uppercase text-white hover:bg-[#233B28] transition-colors cursor-pointer"
-                  onClick={() =>
-                    onBookAppointment(
-                      t,
-                      t.availableSlots?.[0] || '6:30 PM'
-                    )
-                  }
-                >
-                  Book
-                </button>
-              </div>
-            </article>
-          ))}
+                    Dossier
+                  </button>
+                  <button
+                    className="rounded-full bg-[#16291F] px-4 py-2 text-xs font-bold uppercase text-white hover:bg-[#233B28] transition-colors cursor-pointer"
+                    onClick={() => onBookAppointment(t, t.availableSlots?.[0] || '6:30 PM')}
+                  >
+                    Book
+                  </button>
+                </div>
+              </article>
+            );
+          })}
         </div>
       </div>
     </section>
   )
 }
-
 // ==========================================
 // 2. Specialist Dossier Modal
 // ==========================================

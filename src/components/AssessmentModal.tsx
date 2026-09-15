@@ -1,17 +1,25 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence, type Variants } from 'motion/react';
 import { JointId, AssessmentState } from '../types';
 import { CLINICAL_JOINTS, SPECIALISTS_DATA } from '../data/clinicalData';
 import { X, Check, ArrowRight, ArrowLeft, Shield, Calendar, Clock, Sparkles } from 'lucide-react';
 import type { Therapist } from '../types/therapist';
+import { api } from '../lib/api';
 
 interface AssessmentModalProps {
   isOpen: boolean;
   onClose: () => void;
   initialJoint: JointId;
-  preselectedSpecialist: Therapist | null;  // Changed from Specialist to Therapist
+  preselectedSpecialist: Therapist | null;
   preselectedSlot?: string;
 }
+
+interface SubmitResponse {
+  assessmentId: number;
+  appointmentId: number;
+  appointmentAt: string;
+}
+
 export const AssessmentModal: React.FC<AssessmentModalProps> = ({
   isOpen,
   onClose,
@@ -26,7 +34,7 @@ export const AssessmentModal: React.FC<AssessmentModalProps> = ({
     painScale: 5,
     aggravatingFactor: 'Downhill walking / descending stairs',
     primaryGoal: 'Return to running / painless physical activity',
-    selectedSpecialistId: preselectedSpecialist ? preselectedSpecialist.id : 'sarah-chen',
+    selectedSpecialistId: preselectedSpecialist?.id ?? '',
     selectedSlot: preselectedSlot,
     patientName: '',
     patientPhone: '',
@@ -36,19 +44,122 @@ export const AssessmentModal: React.FC<AssessmentModalProps> = ({
 
   const [direction, setDirection] = useState<number>(1);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const [therapists, setTherapists] = useState<Therapist[]>([]);
+  const [loadingTherapists, setLoadingTherapists] = useState(false);
+  const [appointmentRef, setAppointmentRef] = useState<string | null>(null);
+
+  // Load therapists from backend when modal opens or step 4 is reached
+  useEffect(() => {
+    if (isOpen && assessment.step === 4) {
+      loadTherapists();
+    }
+  }, [isOpen, assessment.step]);
+
+const loadTherapists = async () => {
+  setLoadingTherapists(true);
+  try {
+    const data = await api.get<Therapist[]>('/therapists');
+    const normalizedData = data.map(t => ({
+      ...t,
+      id: String(t.id),
+      rating: t.rating?.toString() || '0',
+      pricePerSession: t.pricePerSession?.toString() || '0',
+      matchScore: t.matchScore?.toString() || '0',
+    })) as Therapist[];
+
+    setTherapists(normalizedData);
+
+    // FIX: agar selectedSpecialistId list me nahi hai (fake-default tha), pehla-real-therapist select karo
+    const isValidSelection = normalizedData.some(t => t.id === assessment.selectedSpecialistId);
+    if (!isValidSelection && normalizedData.length > 0) {
+      setAssessment(prev => ({ ...prev, selectedSpecialistId: normalizedData[0].id }));
+    }
+
+    if (preselectedSpecialist && !normalizedData.find(t => t.id === preselectedSpecialist.id)) {
+      setTherapists(prev => [
+        ...prev,
+        { ...preselectedSpecialist, id: String(preselectedSpecialist.id) } as Therapist
+      ]);
+    }
+  } catch (err) {
+    console.error('Failed to load therapists:', err);
+    setError('Failed to load available therapists');
+  } finally {
+    setLoadingTherapists(false);
+  }
+};
 
   if (!isOpen) return null;
 
-  const currentSpecialist =
-    SPECIALISTS_DATA.find((s) => s.id === assessment.selectedSpecialistId) || SPECIALISTS_DATA[0];
-  const activeJointData = CLINICAL_JOINTS[assessment.selectedJoint] || CLINICAL_JOINTS.knee;
+  const currentSpecialist = therapists.length > 0
+  ? therapists.find(t => String(t.id) === String(assessment.selectedSpecialistId)) ||
+    (preselectedSpecialist ? { ...preselectedSpecialist } as unknown as Therapist : null) ||
+    therapists[0]
+  : SPECIALISTS_DATA.find((s) => s.id === assessment.selectedSpecialistId) || SPECIALISTS_DATA[0];
+
+const specialistName =
+  'fullName' in currentSpecialist
+    ? currentSpecialist.fullName
+    : currentSpecialist.name;
+
+    const specialistPrice =
+  'pricePerSession' in currentSpecialist
+    ? currentSpecialist.pricePerSession
+    : currentSpecialist.consultationFee;
+
+const activeJointData = CLINICAL_JOINTS[assessment.selectedJoint] || CLINICAL_JOINTS.knee;
+
+ // In handleSubmit function (around line 130)
+const handleSubmit = async () => {
+  setSubmitting(true);
+  setError(null);
+  
+  try {
+    // FIX: Ensure therapistId is converted to number for backend
+    const therapistIdNum = assessment.selectedSpecialistId 
+      ? Number(assessment.selectedSpecialistId) 
+      : null;
+
+    if (!therapistIdNum) {
+      throw new Error('No therapist selected');
+    }
+
+    const response = await api.post<SubmitResponse>('/assessments/submit-with-booking', {
+      bodyPart: assessment.selectedJoint,
+      painDuration: assessment.painDuration,
+      painScale: assessment.painScale,
+      aggravatingFactor: assessment.aggravatingFactor,
+      primaryGoal: assessment.primaryGoal,
+      notes: assessment.notes,
+      therapistId: therapistIdNum,
+      appointmentSlot: assessment.selectedSlot
+    });
+
+    console.log('Booking payload:', {
+      bodyPart: assessment.selectedJoint,
+      therapistId: therapistIdNum,
+      appointmentSlot: assessment.selectedSlot,
+    });
+
+    setAppointmentRef(`#KT-${new Date().getFullYear()}-${response.appointmentId}`);
+    setIsSubmitted(true);
+  } catch (err) {
+    console.error('Booking failed:', err);
+    setError(err instanceof Error ? err.message : 'Booking failed. Please try again.');
+  } finally {
+    setSubmitting(false);
+  }
+};
 
   const handleNext = () => {
     setDirection(1);
     if (assessment.step < 4) {
       setAssessment((prev) => ({ ...prev, step: prev.step + 1 }));
     } else {
-      setIsSubmitted(true);
+      // On final step, submit to backend
+      handleSubmit();
     }
   };
 
@@ -61,6 +172,8 @@ export const AssessmentModal: React.FC<AssessmentModalProps> = ({
 
   const resetAndClose = () => {
     setIsSubmitted(false);
+    setAppointmentRef(null);
+    setError(null);
     onClose();
   };
 
@@ -91,7 +204,7 @@ export const AssessmentModal: React.FC<AssessmentModalProps> = ({
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/65 backdrop-blur-sm transition-opacity duration-150">
       <div className="relative w-full max-w-2xl bg-white rounded-3xl shadow-2xl border-2 border-neutral-900 overflow-hidden flex flex-col max-h-[90vh]">
-        
+
         {/* Modal Top Header */}
         <div className="flex items-center justify-between px-6 py-4 border-b border-neutral-200 bg-neutral-50">
           <div className="flex items-center gap-2">
@@ -141,7 +254,7 @@ export const AssessmentModal: React.FC<AssessmentModalProps> = ({
               </div>
 
               <div className="inline-block bg-emerald-50 text-emerald-900 border border-emerald-300 text-xs font-clinical-mono px-3.5 py-1 rounded-full mb-3 font-extrabold">
-                APPOINTMENT CONFIRMED · REF: #KT-2026-884
+                APPOINTMENT CONFIRMED · REF: {appointmentRef || '#KT-PENDING'}
               </div>
 
               <h3 className="font-editorial-serif text-3xl font-bold text-neutral-950 mb-2">
@@ -149,7 +262,7 @@ export const AssessmentModal: React.FC<AssessmentModalProps> = ({
               </h3>
 
               <p className="text-sm text-neutral-600 max-w-md mx-auto mb-6 leading-relaxed">
-                You are confirmed with <strong className="text-neutral-950">{currentSpecialist.name}</strong> for {assessment.selectedSlot} tomorrow. A calendar invite and SMS confirmation have been dispatched.
+                You are confirmed with <strong className="text-neutral-950">{specialistName}</strong> for {assessment.selectedSlot} tomorrow. A calendar invite and SMS confirmation have been dispatched.
               </p>
 
               <div className="bg-[#FAFAF8] border-2 border-neutral-200 rounded-2xl p-5 max-w-md mx-auto text-left text-xs font-clinical-mono space-y-2.5 mb-6 real-shadow-xs">
@@ -159,7 +272,7 @@ export const AssessmentModal: React.FC<AssessmentModalProps> = ({
                 </div>
                 <div className="flex justify-between border-b border-neutral-200 pb-2">
                   <span className="text-neutral-500">Treating Clinician:</span>
-                  <span className="font-bold text-neutral-900">{currentSpecialist.name} ({currentSpecialist.degrees})</span>
+                  <span className="font-bold text-neutral-900">{specialistName} ({currentSpecialist.degrees})</span>
                 </div>
                 <div className="flex justify-between border-b border-neutral-200 pb-2">
                   <span className="text-neutral-500">Appointment Time:</span>
@@ -379,8 +492,8 @@ export const AssessmentModal: React.FC<AssessmentModalProps> = ({
                     <div className="bg-[#FAFAF8] border-2 border-neutral-200 hover:border-neutral-900 rounded-2xl p-4 mb-5 flex items-center justify-between gap-4 transition-colors duration-150">
                       <div className="flex items-center gap-3">
                         <img
-                          src={currentSpecialist.avatarUrl}
-                          alt={currentSpecialist.name}
+                          src={currentSpecialist.avatarUrl ?? undefined}
+                          alt={specialistName}
                           referrerPolicy="no-referrer"
                           className="w-14 h-14 rounded-2xl object-cover border-2 border-neutral-900 real-shadow-2xs"
                         />
@@ -389,7 +502,7 @@ export const AssessmentModal: React.FC<AssessmentModalProps> = ({
                             ★ {currentSpecialist.matchScore}% MATCH · VERIFIED
                           </div>
                           <h5 className="font-editorial-serif text-base font-bold text-neutral-950">
-                            {currentSpecialist.name}
+                            {specialistName}
                           </h5>
                           <p className="text-xs text-neutral-600 font-clinical-mono">
                             {currentSpecialist.degrees} · {currentSpecialist.specialization}
@@ -400,7 +513,7 @@ export const AssessmentModal: React.FC<AssessmentModalProps> = ({
                       <div className="text-right shrink-0">
                         <div className="text-[10px] font-clinical-mono text-neutral-500 uppercase font-bold">Consult Fee</div>
                         <div className="text-xs text-neutral-400 line-through">
-                          ₹{currentSpecialist.consultationFee}
+                          ₹{specialistPrice ?? 0}
                         </div>
                         {/* Removed - no backend support yet, see backend simplification plan */}
                         {/* <div className="text-sm text-emerald-700 font-clinical-mono font-black">
@@ -483,6 +596,16 @@ export const AssessmentModal: React.FC<AssessmentModalProps> = ({
           )}
         </div>
 
+        {/* Error Banner */}
+        {error && !isSubmitted && (
+          <div className="px-6 py-3 bg-red-50 border-t border-red-200">
+            <p className="text-sm text-red-800 font-clinical-mono flex items-center gap-2">
+              <span className="inline-block w-2 h-2 rounded-full bg-red-500"></span>
+              {error}
+            </p>
+          </div>
+        )}
+
         {/* Modal Footer Controls */}
         {!isSubmitted && (
           <div className="px-6 py-4 border-t border-neutral-200 bg-neutral-50 flex items-center justify-between">
@@ -501,10 +624,19 @@ export const AssessmentModal: React.FC<AssessmentModalProps> = ({
             <button
               id="assessment-submit-next"
               onClick={handleNext}
-              className="bg-[#181816] hover:bg-[#2A2A26] text-[#F9F8F5] font-bold px-6 py-3 rounded-xl text-xs font-clinical-mono uppercase tracking-wider flex items-center gap-1.5 transition-all duration-150 real-shadow-xs border border-[#C59E5F] hover:border-[#DFBA73] hover:scale-105 active:scale-95 cursor-pointer"
+              disabled={submitting || (assessment.step === 4 && loadingTherapists)}
+              className="bg-[#181816] hover:bg-[#2A2A26] text-[#F9F8F5] font-bold px-6 py-3 rounded-xl text-xs font-clinical-mono uppercase tracking-wider flex items-center gap-1.5 transition-all duration-150 real-shadow-xs border border-[#C59E5F] hover:border-[#DFBA73] hover:scale-105 active:scale-95 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
             >
-              <span>{assessment.step === 4 ? 'Confirm & Book Appointment' : 'Next Step'}</span>
-              <ArrowRight size={13} className="text-[#C59E5F]" />
+              {submitting ? (
+                <>
+                  <span className="animate-pulse">Booking...</span>
+                </>
+              ) : (
+                <>
+                  <span>{assessment.step === 4 ? 'Confirm & Book Appointment' : 'Next Step'}</span>
+                  <ArrowRight size={13} className="text-[#C59E5F]" />
+                </>
+              )}
             </button>
           </div>
         )}
