@@ -9,7 +9,7 @@ export async function assertNoActiveAppointments(
     [id],
   )
   if (rows[0]) {
-    const error = new Error('Cannot deactivate — active appointments exist') as Error & { status: number; code: string }
+    const error = new Error('Ye specialist deactivate nahi ho sakta — pehle unki active appointments cancel ya complete karein.') as Error & { status: number; code: string }
     error.status = 409
     error.code = 'RESOURCE_IN_USE'
     throw error
