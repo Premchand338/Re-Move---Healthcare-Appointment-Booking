@@ -11,7 +11,7 @@ export function TherapistListPage() {
 
   const [showForm, setShowForm] = useState(false)
   const [editingTherapist, setEditingTherapist] = useState<Therapist | null>(null)
-  const [deactivatingId, setDeactivatingId] = useState<string  | null>(null)
+  const [deactivatingId, setDeactivatingId] = useState<string | number | null>(null)
 
   const loadTherapists = () => {
     setLoading(true)

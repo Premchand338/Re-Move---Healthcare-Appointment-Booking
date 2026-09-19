@@ -4,16 +4,16 @@
  */
 
 import React, { useState } from 'react';
-import { Routes, Route, useNavigate, useLocation } from 'react-router-dom';
+import { Routes, Route, useNavigate, useLocation, Navigate } from 'react-router-dom';
 import { JointId, Modality } from './types';
 import type { Therapist } from './types/therapist';
 import { Header } from './components/Header';
 import { HeroSection } from './components/HeroSection';
 import { KineticMovementManifesto } from './components/KineticMovementManifesto';
-import { SymptomLocalization } from './components/SymptomLocalization';
+// import { SymptomLocalization } from './components/SymptomLocalization';
 import { ClinicalModalities } from './components/ClinicalModalities';
 import { SpecialistFaculty, SpecialistDossierModal } from './components/TherapistListPage';
-import { ClinicalStandards } from './components/ClinicalStandards';
+// import { ClinicalStandards } from './components/ClinicalStandards';
 import { Footer } from './components/Footer';
 import { AssessmentModal } from './components/AssessmentModal';
 import { ClinicalEvidenceModal } from './components/ClinicalEvidenceModal';
@@ -24,6 +24,7 @@ import { RegisterPage } from './pages/RegisterPage';
 import { TherapistListPage } from './pages/TherapistListPage';
 import { ProtectedRoute } from './components/ProtectedRoute';
 import { StickyBookingBar } from './components/StickyBookingBar';
+import { AdminLayout, AdminDashboardOverview } from './pages/AdminDashboard';
 
 function LandingExperience() {
   const [selectedJoint, setSelectedJoint] = useState<JointId>('knee');
@@ -76,29 +77,15 @@ function LandingExperience() {
           onExploreBody={() => handleNavigateSection('symptom-localization')}
         />
 
-        <KineticMovementManifesto
-          onExploreTriage={() => handleNavigateSection('symptom-localization')}
-        />
-
-        <SymptomLocalization
-          selectedJoint={selectedJoint}
-          onSelectJoint={setSelectedJoint}
-          onStartAssessment={handleStartAssessment}
+        <AboutUs
+          onNavigateHome={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+          onNavigateContact={() => handleNavigateSection('contact-us')}
+          onStartAssessment={(joint?: JointId) => handleStartAssessment(joint)}
         />
 
         <SpecialistFaculty
           onOpenDossier={handleOpenDossier}
           onBookAppointment={handleBookAppointment}
-        />
-
-        {/* <ClinicalModalities onOpenEvidence={handleOpenEvidence} /> */}
-
-        <ClinicalStandards onStartAssessment={() => handleStartAssessment(selectedJoint)} />
-
-        <AboutUs
-          onNavigateHome={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-          onNavigateContact={() => handleNavigateSection('contact-us')}
-          onStartAssessment={(joint?: JointId) => handleStartAssessment(joint)}
         />
 
         <ContactUs
@@ -108,8 +95,8 @@ function LandingExperience() {
       </main>
 
       <Footer onNavigateSection={handleNavigateSection} />
-      
-<StickyBookingBar onQuickBook={handleBookAppointment} />
+
+      <StickyBookingBar onQuickBook={handleBookAppointment} />
 
       <AssessmentModal
         isOpen={isAssessmentOpen}
@@ -141,6 +128,8 @@ export default function App() {
   const location = useLocation();
 
   const [selectedJoint, setSelectedJoint] = useState<JointId>('knee');
+  const role = localStorage.getItem('role');
+  const isAdmin = role === 'admin';
 
   const scrollToSection = (sectionId: string) => {
     const el = document.getElementById(sectionId);
@@ -173,29 +162,43 @@ export default function App() {
     localStorage.removeItem('token');
     localStorage.removeItem('role');
     localStorage.removeItem('email');
-    navigate('/');
+    window.location.href = '/';
   };
 
   return (
     <div className="min-h-screen bg-[#F9F8F5] text-[#181816] font-editorial-sans selection:bg-[#C59E5F]/30 selection:text-[#181816] flex flex-col bg-washi-grain">
-      <Header
-        onFindTherapist={() => handleStartAssessment(selectedJoint)}
-        onNavigateSection={handleNavigateSection}
-        onNavigateHome={handleNavigateHome}
-        onLogin={handleLogin}
-        onRegister={handleRegister}
-        onLogout={handleLogout}
-      />
+      {/* ✅ FIX: Header ab sirf non-admin ke liye render hoga */}
+      {!isAdmin && (
+        <Header
+          onFindTherapist={() => handleStartAssessment(selectedJoint)}
+          onNavigateSection={handleNavigateSection}
+          onNavigateHome={handleNavigateHome}
+          onLogin={handleLogin}
+          onRegister={handleRegister}
+          onLogout={handleLogout}
+        />
+      )}
 
       <Routes>
-        <Route path="/" element={<LandingExperience />} />
+        <Route
+          path="/"
+          element={isAdmin ? <Navigate to="/admin" replace /> : <LandingExperience />}
+        />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<RegisterPage />} />
         <Route
-          path="/therapists"
+          path="/admin"
           element={
             <ProtectedRoute allowedRoles={['admin']}>
-              <TherapistListPage />
+              <AdminLayout><AdminDashboardOverview /></AdminLayout>
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/admin/therapists"
+          element={
+            <ProtectedRoute allowedRoles={['admin']}>
+              <AdminLayout><TherapistListPage /></AdminLayout>
             </ProtectedRoute>
           }
         />

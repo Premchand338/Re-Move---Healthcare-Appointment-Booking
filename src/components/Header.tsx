@@ -33,10 +33,11 @@ export const Header: React.FC<HeaderProps> = ({
   const isAdmin = userRole === 'admin'; // ✅ Check if admin
 
   const navLinks = [
+     {label: 'About Us', id: 'about-us' },
     { label: 'Find Doctors', id: 'specialists' },
-    { label: 'Treatments & Evidence', id: 'modalities' },
-    { label: 'Clinical Standards', id: 'clinical-standards' },
-    { label: 'About Us', id: 'about-us' },
+    // { label: 'Treatments & Evidence', id: 'modalities' },
+    // { label: 'Clinical Standards', id: 'clinical-standards' },
+
     { label: 'Contact Us', id: 'contact-us' }
   ];
 
@@ -105,7 +106,7 @@ export const Header: React.FC<HeaderProps> = ({
           {/* ✅ ADMIN BUTTON (Only visible to admins) */}
           {isAdmin && (
             <button
-              onClick={() => navigate('/admin/therapists')}
+              onClick={() =>navigate('/admin')}
               className="hidden sm:flex items-center gap-2 px-4 py-2 rounded-full bg-[#181816] text-[#F9F8F5] text-[11px] font-clinical-mono font-bold uppercase tracking-wider hover:bg-[#2A2A26] transition-all cursor-pointer border border-[#C59E5F] hover:border-[#DFBA73]"
               title="Manage Specialists"
             >
@@ -157,7 +158,7 @@ export const Header: React.FC<HeaderProps> = ({
                     <button
                       onClick={() => {
                         setShowLogoutMenu(false);
-                        navigate('/therapists');
+                      navigate('/admin');
                       }}
                       className="w-full flex items-center gap-2 rounded-xl px-4 py-2.5 text-[#181816] font-clinical-mono text-[11px] font-bold uppercase tracking-wider hover:bg-[#EFECE3] transition-colors mb-1"
                     >
