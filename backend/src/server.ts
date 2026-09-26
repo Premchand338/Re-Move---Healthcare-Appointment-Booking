@@ -17,19 +17,19 @@ const port = Number(process.env.PORT ?? 4000)
 app.use(cors())
 app.use(express.json())
 
-app.get('/api/health', async (_req, res, next) => {
+app.get('/health', async (_req, res, next) => {
   try {
     await pool.query('SELECT 1')
     res.json({ success: true, data: { status: 'ok' } })
   } catch (error) { next(error) }
 })
-app.use('/api/inquiries', inquiryRoutes)
-app.use('/api/assessments', assessmentRoutes)
-app.use('/api/auth', authRoutes)
-app.use('/api/patients', patientRoutes)
-app.use('/api/therapists', therapistRoutes)
-app.use('/api/services', serviceRoutes)
-app.use('/api/appointments', appointmentRoutes)
+app.use('/inquiries', inquiryRoutes)
+app.use('/assessments', assessmentRoutes)
+app.use('/auth', authRoutes)
+app.use('/patients', patientRoutes)
+app.use('/therapists', therapistRoutes)
+app.use('/services', serviceRoutes)
+app.use('/appointments', appointmentRoutes)
 
 const errorHandler: ErrorRequestHandler = (error, _req, res, _next) => {
   if (error.code === '23505') {
