@@ -401,7 +401,7 @@ export function TherapistForm({
         <button
           type="submit"
           disabled={isSubmitting}
-          className="flex-1 bg-[#181816] hover:bg-[#2A2A26] text-[#F9F8F5] font-bold py-3 rounded-xl text-sm disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 transition-all cursor-pointer"
+          className="ui-btn ui-btn-primary flex-1 disabled:opacity-50 disabled:cursor-not-allowed"
         >
           {isSubmitting && <Loader2 size={16} className="animate-spin" />}
 
@@ -416,7 +416,7 @@ export function TherapistForm({
           type="button"
           onClick={onCancel}
           disabled={isSubmitting}
-          className="flex-1 bg-neutral-100 hover:bg-neutral-200 text-neutral-800 font-bold py-3 rounded-xl text-sm disabled:opacity-50 transition-all cursor-pointer"
+          className="ui-btn ui-btn-secondary flex-1 disabled:opacity-50 disabled:cursor-not-allowed"
         >
           Cancel
         </button>

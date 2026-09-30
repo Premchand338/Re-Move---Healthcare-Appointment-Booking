@@ -35,10 +35,10 @@ export function AdminLayout({ children }: { children: React.ReactNode }) {
   };
 
   return (
-    <div className="min-h-screen bg-[#F9F8F5] flex">
+    <div className="min-h-screen bg-[#F7F4EE] flex">
 
          {/* Mobile top-bar — sirf small-screens-pe dikhega */}
-      <div className="lg:hidden fixed top-0 left-0 right-0 z-40 bg-white border-b border-[#E5E1D8] h-14 flex items-center px-4 gap-3">
+      <div className="lg:hidden fixed top-0 left-0 right-0 z-40 bg-white border-b border-[#E3DED3] h-14 flex items-center px-4 gap-3">
         <button
           onClick={() => setSidebarOpen((open) => !open)}
           className="p-2 text-[#4A4843] hover:bg-[#EFECE3] rounded-xl transition-colors"
@@ -61,7 +61,7 @@ export function AdminLayout({ children }: { children: React.ReactNode }) {
       )}
       {/* Sidebar */}
       <aside
-        className={`w-64 shrink-0 bg-white border-r border-[#E5E1D8] flex flex-col fixed inset-y-0 left-0 z-50 transition-transform duration-200 ease-in-out lg:static lg:translate-x-0 ${
+        className={`w-64 shrink-0 bg-white border-r border-[#E3DED3] flex flex-col fixed inset-y-0 left-0 z-50 transition-transform duration-200 ease-in-out lg:static lg:translate-x-0 ${
           sidebarOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'
         }`}
       >
@@ -166,7 +166,7 @@ export function AdminDashboardOverview() {
   if (loading) {
     return (
       <div className="min-h-screen flex items-center justify-center">
-        <div className="w-12 h-12 border-4 border-[#C59E5F] border-t-transparent rounded-full animate-spin" />
+        <div className="w-12 h-12 border-4 border-[#8C3B2F] border-t-transparent rounded-full animate-spin" />
       </div>
     );
   }
@@ -177,10 +177,10 @@ export function AdminDashboardOverview() {
       <p className="text-sm text-neutral-600 font-clinical-mono mb-8">Welcome back, Administrator</p>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <div className="bg-white rounded-2xl p-6 border-2 border-[#E5E1D8] hover:border-[#C59E5F] transition-colors">
+        <div className="bg-white rounded-2xl p-6 border-2 border-[#E3DED3] hover:border-[#8C3B2F] transition-colors">
           <div className="flex items-center justify-between mb-4">
-            <div className="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center">
-              <Users className="w-6 h-6 text-blue-600" />
+            <div className="w-12 h-12 bg-[#8C3B2F]/10 rounded-xl flex items-center justify-center">
+              <Users className="w-6 h-6 text-[#8C3B2F]" />
             </div>
             <TrendingUp className="w-5 h-5 text-neutral-400" />
           </div>
@@ -188,10 +188,10 @@ export function AdminDashboardOverview() {
           <p className="text-xs font-clinical-mono text-neutral-600 mt-1 uppercase tracking-wider">Total Patients</p>
         </div>
 
-        <div className="bg-white rounded-2xl p-6 border-2 border-[#E5E1D8] hover:border-[#C59E5F] transition-colors">
+        <div className="bg-white rounded-2xl p-6 border-2 border-[#E3DED3] hover:border-[#8C3B2F] transition-colors">
           <div className="flex items-center justify-between mb-4">
-            <div className="w-12 h-12 bg-emerald-100 rounded-xl flex items-center justify-center">
-              <Stethoscope className="w-6 h-6 text-emerald-600" />
+            <div className="w-12 h-12 bg-[#1F4E45]/10 rounded-xl flex items-center justify-center">
+              <Stethoscope className="w-6 h-6 text-[#1F4E45]" />
             </div>
             <TrendingUp className="w-5 h-5 text-neutral-400" />
           </div>
@@ -199,9 +199,9 @@ export function AdminDashboardOverview() {
           <p className="text-xs font-clinical-mono text-neutral-600 mt-1 uppercase tracking-wider">Active Therapists</p>
         </div>
 
-        <div className="bg-white rounded-2xl p-6 border-2 border-[#E5E1D8] hover:border-[#C59E5F] transition-colors">
+        <div className="bg-white rounded-2xl p-6 border-2 border-[#E3DED3] hover:border-[#8C3B2F] transition-colors">
           <div className="flex items-center justify-between mb-4">
-            <div className="w-12 h-12 bg-amber-100 rounded-xl flex items-center justify-center">
+            <div className="w-12 h-12 bg-[#5A5750]/10 rounded-xl flex items-center justify-center">
               <Calendar className="w-6 h-6 text-amber-600" />
             </div>
             <Clock className="w-5 h-5 text-neutral-400" />

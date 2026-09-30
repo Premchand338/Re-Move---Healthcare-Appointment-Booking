@@ -18,7 +18,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigateSection }) => {
               <span className="font-editorial-serif text-3xl font-extrabold tracking-tight text-white">
                 KINETIC
               </span>
-              <span className="bg-[#C59E5F] text-[#181816] text-[10px] font-bold px-2 py-0.5 rounded-sm">
+              <span className="bg-[#8C3B2F] text-white text-[10px] font-bold px-2 py-0.5 rounded-sm">
                 HEALTH
               </span>
             </div>
@@ -37,22 +37,22 @@ export const Footer: React.FC<FooterProps> = ({ onNavigateSection }) => {
               </span>
               <ul className="space-y-2 text-neutral-400">
                 <li>
-                  <button onClick={() => onNavigateSection('symptom-localization')} className="hover:text-[#DFBA73] transition-colors cursor-pointer text-left">
+                  <button onClick={() => onNavigateSection('symptom-localization')} className="hover:text-[#F7F4EE] transition-colors cursor-pointer text-left">
                     Knee & ACL Specialists
                   </button>
                 </li>
                 <li>
-                  <button onClick={() => onNavigateSection('symptom-localization')} className="hover:text-[#DFBA73] transition-colors cursor-pointer text-left">
+                  <button onClick={() => onNavigateSection('symptom-localization')} className="hover:text-[#F7F4EE] transition-colors cursor-pointer text-left">
                     Spine & Sciatica Therapy
                   </button>
                 </li>
                 <li>
-                  <button onClick={() => onNavigateSection('symptom-localization')} className="hover:text-[#DFBA73] transition-colors cursor-pointer text-left">
+                  <button onClick={() => onNavigateSection('symptom-localization')} className="hover:text-[#F7F4EE] transition-colors cursor-pointer text-left">
                     Rotator Cuff & Shoulder
                   </button>
                 </li>
                 <li>
-                  <button onClick={() => onNavigateSection('specialists')} className="hover:text-[#DFBA73] transition-colors cursor-pointer text-left">
+                  <button onClick={() => onNavigateSection('specialists')} className="hover:text-[#F7F4EE] transition-colors cursor-pointer text-left">
                     All Physical Therapists
                   </button>
                 </li>
@@ -65,22 +65,22 @@ export const Footer: React.FC<FooterProps> = ({ onNavigateSection }) => {
               </span>
               <ul className="space-y-2 text-neutral-400">
                 <li>
-                  <button onClick={() => onNavigateSection('modalities')} className="hover:text-[#DFBA73] transition-colors cursor-pointer text-left">
+                  <button onClick={() => onNavigateSection('modalities')} className="hover:text-[#F7F4EE] transition-colors cursor-pointer text-left">
                     Clinical Evidence Library
                   </button>
                 </li>
                 <li>
-                  <button onClick={() => onNavigateSection('trajectory')} className="hover:text-[#DFBA73] transition-colors cursor-pointer text-left">
+                  <button onClick={() => onNavigateSection('trajectory')} className="hover:text-[#F7F4EE] transition-colors cursor-pointer text-left">
                     Predictive Milestones
                   </button>
                 </li>
                 <li>
-                  <button onClick={() => onNavigateSection('biomechanical-visualizer')} className="hover:text-[#DFBA73] transition-colors cursor-pointer text-left">
+                  <button onClick={() => onNavigateSection('biomechanical-visualizer')} className="hover:text-[#F7F4EE] transition-colors cursor-pointer text-left">
                     3D Anatomical Body Map
                   </button>
                 </li>
                 <li>
-                  <button onClick={() => onNavigateSection('specialists')} className="hover:text-[#DFBA73] transition-colors cursor-pointer text-left">
+                  <button onClick={() => onNavigateSection('specialists')} className="hover:text-[#F7F4EE] transition-colors cursor-pointer text-left">
                     Verified Patient Reviews
                   </button>
                 </li>
@@ -118,7 +118,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigateSection }) => {
         {/* Flagship Clinics Detailed Directory */}
         {/* <div className="py-12 border-b border-neutral-800">
           <div className="flex items-center gap-2 mb-6">
-            <MapPin size={16} className="text-[#C59E5F]" />
+            <MapPin size={16} className="text-[#8C3B2F]" />
             <span className="font-clinical-mono text-xs uppercase tracking-wider text-white font-bold">
               PHYSICAL THERAPY CLINIC LOCATIONS
             </span>

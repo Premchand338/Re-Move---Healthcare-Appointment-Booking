@@ -97,7 +97,7 @@ export function TherapistListPage() {
 
         <button
           onClick={handleAdd}
-          className="flex items-center gap-2 bg-[#181816] hover:bg-[#2A2A26] text-[#F9F8F5] px-5 py-2.5 rounded-xl text-sm font-bold transition-all shadow-sm cursor-pointer"
+          className="ui-btn ui-btn-primary ui-btn-small"
         >
           <Plus size={16} />
           <span>Add Specialist</span>
@@ -155,12 +155,12 @@ export function TherapistListPage() {
                   </div>
 
                   {t.active ? (
-                    <span className="flex items-center gap-1 text-[10px] font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-200">
+                    <span className="ui-badge ui-badge-success">
                       <CheckCircle2 size={10} />
                       Active
                     </span>
                   ) : (
-                    <span className="flex items-center gap-1 text-[10px] font-bold text-neutral-500 bg-neutral-100 px-2 py-0.5 rounded-full border border-neutral-200">
+                    <span className="ui-badge ui-badge-neutral">
                       Inactive
                     </span>
                   )}
@@ -194,7 +194,7 @@ export function TherapistListPage() {
                 {/* Edit */}
                 <button
                   onClick={() => handleEdit(t)}
-                  className="flex-1 text-xs font-bold text-neutral-600 hover:text-neutral-900 py-2 rounded-lg hover:bg-neutral-50 transition-colors cursor-pointer"
+                  className="ui-btn ui-btn-secondary ui-btn-small flex-1"
                 >
                   Edit Details
                 </button>
@@ -204,7 +204,7 @@ export function TherapistListPage() {
                   <button
                     onClick={() => handleDeactivate(t)}
                     disabled={deactivatingId === t.id}
-                    className="flex-1 flex items-center justify-center gap-1 text-xs font-bold text-red-600 hover:text-red-700 py-2 rounded-lg hover:bg-red-50 transition-colors cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="ui-btn ui-btn-danger ui-btn-small flex-1 disabled:opacity-50 disabled:cursor-not-allowed"
                   >
                     {deactivatingId === t.id ? (
                       <>

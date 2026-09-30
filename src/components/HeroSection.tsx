@@ -192,8 +192,8 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
             </div>
 
             {/* Live Service Indicator Badge */}
-            <div className="flex items-center gap-2 text-xs font-clinical-mono text-[#FFF04B] bg-[#FFF04B]/15 px-3 py-1 rounded-full border border-[#FFF04B]/30">
-              <Activity size={13} className="text-[#FFF04B]" />
+            <div className="flex items-center gap-2 text-xs font-clinical-mono text-[#F7F4EE] bg-white/10 px-3 py-1 rounded-full border border-white/20">
+              <Activity size={13} className="text-[#F7F4EE]" />
               <span className="font-bold uppercase tracking-wider">Kinematic Specialization:</span>
               <span className="text-white font-bold">{currentService.code}</span>
             </div>
@@ -213,7 +213,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
               {/* Main Headline with Animated Rotating Text */}
               <h1 className="font-editorial-serif text-3xl sm:text-4xl md:text-5xl lg:text-[3.4rem] font-normal tracking-tight text-white leading-[1.1] mb-4">
                 Clinical physical therapy for{' '}
-                <span className="inline-block relative min-h-[1.25em] align-top text-[#FFF04B]">
+                <span className="inline-block relative min-h-[1.25em] align-top text-[#F7F4EE]">
                   <AnimatePresence mode="wait">
                     <motion.span
                       key={currentService.id}
@@ -225,7 +225,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
                         visible: {},
                         exit: { opacity: 0, y: -8, transition: { duration: 0.18 } }
                       }}
-                      className="font-editorial-serif italic inline-block font-semibold text-[#FFF04B]"
+                      className="font-editorial-serif italic inline-block font-semibold text-[#F7F4EE]"
                       aria-label={`${currentService.title}.`}
                     >
                       {`${currentService.title}.`.split(' ').map((word, index) => (
@@ -261,7 +261,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
                     transition={{ duration: 0.3, delay: 0.28 }}
                     className="flex items-center gap-2 text-sm sm:text-base text-neutral-100 font-editorial-sans"
                   >
-                    <span className="px-2 py-0.5 rounded-md bg-[#FFF04B]/15 font-clinical-mono text-xs font-bold text-[#FFF04B] border border-[#FFF04B]/30">
+                    <span className="px-2 py-0.5 rounded-md bg-[#8C3B2F] font-clinical-mono text-xs font-bold text-white border border-[#8C3B2F]">
                       {currentService.category}
                     </span>
                     <span>{currentService.subtext}</span>
@@ -321,13 +321,13 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
               </div>
 
     
-              <div className="bg-[#181816]/82 backdrop-blur-md text-[#F9F8F5] rounded-2xl p-3.5 border border-[#FFF04B]/70 real-shadow-lg shadow-black/25 flex items-center justify-between gap-3">
+              <div className="bg-[#1F1F1F]/82 backdrop-blur-md text-[#F7F4EE] rounded-2xl p-3.5 border border-[#8C3B2F]/60 real-shadow-lg shadow-black/25 flex items-center justify-between gap-3">
                 <div className="flex items-center gap-2.5">
-                  <div className="w-9 h-9 rounded-xl bg-[#FFF04B]/15 text-[#FFF04B] flex items-center justify-center shrink-0 border border-[#FFF04B]/30">
+                  <div className="w-9 h-9 rounded-xl bg-[#1F4E45]/20 text-[#F7F4EE] flex items-center justify-center shrink-0 border border-[#1F4E45]/50">
                     <Calendar size={16} />
                   </div>
                   <div>
-                    <div className="text-[9px] font-clinical-mono font-bold uppercase tracking-wider text-[#FFF04B]">
+                    <div className="text-[9px] font-clinical-mono font-bold uppercase tracking-wider text-[#F7F4EE]">
                       Next Available Session
                     </div>
                     <div className="text-sm font-bold font-clinical-mono text-white">
@@ -339,8 +339,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
                 <button
                   type="button"
                   onClick={() => onStartAssessment(selectedJoint)}
-                  
-                  className="bg-[#ffee34] hover:bg-[#181816] hover:text-[#FFF04B] hover:border-2 hover:border-[#181816] text-[#181816] px-3.5 py-2 rounded-xl text-xs font-bold font-clinical-mono uppercase tracking-wider flex items-center gap-1 cursor-pointer transition-all hover:scale-105 active:scale-95"
+                  className="ui-btn ui-btn-primary px-3.5 py-2 text-[10px] sm:text-[11px]"
                 >
                   <span>Book Your Appointment</span>
                   <ArrowRight size={12} />
@@ -354,7 +353,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
           {/* Bottom Trust Indicators Strip inside the Framed Hero */}
           <div className="mt-6 pt-4 border-t border-white/10 grid grid-cols-2 sm:grid-cols-4 gap-3 text-xs font-clinical-mono text-neutral-200">
             <div className="flex items-center gap-2">
-              <Star size={14} className="fill-[#FFF04B] text-[#FFF04B] shrink-0" />
+              <Star size={14} className="fill-[#8C3B2F] text-[#8C3B2F] shrink-0" />
               <span>
                 <strong className="text-white">4.96/5.0</strong> (2,840+ Outcomes)
               </span>
@@ -366,7 +365,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
               </span>
             </div>
             <div className="flex items-center gap-2">
-              <UserCheck size={14} className="text-[#FFF04B] shrink-0" />
+              <UserCheck size={14} className="text-[#F7F4EE] shrink-0" />
               <span>
                 <strong className="text-white">60-Min</strong> 1-on-1 Doctoral Care
               </span>

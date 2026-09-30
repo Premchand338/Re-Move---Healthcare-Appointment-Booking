@@ -166,7 +166,7 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-[#F9F8F5] text-[#181816] font-editorial-sans selection:bg-[#C59E5F]/30 selection:text-[#181816] flex flex-col bg-washi-grain">
+    <div className="min-h-screen bg-[var(--paper)] text-[var(--ink)] font-editorial-sans selection:bg-[#8C3B2F]/20 selection:text-[#1F1F1F] flex flex-col bg-washi-grain">
       {/* ✅ FIX: Header ab sirf non-admin ke liye render hoga */}
       {!isAdmin && (
         <Header

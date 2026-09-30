@@ -1,9 +1,10 @@
 import { Router } from 'express'
 import { pool } from '../db'
-import type { Patient, PatientInput } from '../types/patient'
-import { validatePatientInput } from '../utils/patientValidation'
+import type { Patient } from '../types/patient'
 import { assertNoActiveAppointments } from '../utils/appointmentGuard'
 import { requireAuth, requireRole } from '../middleware/auth'
+import { validate } from '../middleware/validate'
+import { patientCreateSchema, patientUpdateSchema } from '../../../shared/validationSchemas'
 import type { AuthRequest } from '../middleware/auth' 
 const router = Router()
 
@@ -15,7 +16,7 @@ const patientColumns = `
   created_at AS "createdAt", updated_at AS "updatedAt"
 `
 
-function parseId(id: string): number {
+function parseId(id: string | string[] | undefined): number {
   const parsed = Number(id)
   if (!Number.isSafeInteger(parsed) || parsed < 1) {
     const error = new Error('Patient id must be a positive integer') as Error & { status: number; code: string }
@@ -26,9 +27,9 @@ function parseId(id: string): number {
   return parsed
 }
 
-router.post('/', requireAuth, async (req: AuthRequest, res, next) => {
+router.post('/', requireAuth, validate(patientCreateSchema), async (req: AuthRequest, res, next) => {
   try {
-    const input = validatePatientInput(req.body as PatientInput, true)
+    const input = req.body
     const userId = req.user?.role === 'patient' ? req.user.userId : null
 
     const { rows } = await pool.query<Patient>(
@@ -57,10 +58,10 @@ router.get('/:id', async (req, res, next) => {
   } catch (error) { next(error) }
 })
 
-router.patch('/:id', async (req, res, next) => {
+router.patch('/:id', validate(patientUpdateSchema), async (req, res, next) => {
   try {
     const id = parseId(req.params.id)
-    const input = validatePatientInput(req.body as PatientInput, false)
+    const input = req.body
     const columns = Object.entries(input)
 
     if (columns.length === 0) {

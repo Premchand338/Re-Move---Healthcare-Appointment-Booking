@@ -142,7 +142,7 @@ export const AboutUs: React.FC<AboutUsProps> = ({
   ];
 
   return (
-    <section id="about-us" className="bg-[#FFFDF4] text-[#181816] min-h-screen py-10 lg:py-16">
+    <section id="about-us" className="bg-[#F7F4EE] text-[#1F1F1F] min-h-screen py-10 lg:py-16">
       
       {/* Top Breadcrumb & Asymmetrical Hero Section */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -166,7 +166,7 @@ export const AboutUs: React.FC<AboutUsProps> = ({
           
           {/* Left Column (7 cols): Editorial Narrative */}
           <div className="lg:col-span-7">
-            <div className="inline-flex items-center gap-2 px-3 py-1 bg-[#FEF9C3] border border-[#181816] rounded-full text-xs font-clinical-mono text-[#181816] mb-4 font-bold">
+            <div className="inline-flex items-center gap-2 px-3 py-1 bg-[#F4E8E4] border border-[#8C3B2F]/30 rounded-full text-xs font-clinical-mono text-[#8C3B2F] mb-4 font-bold">
               <span className="w-1.5 h-1.5 rounded-full bg-[#181816]" />
               <span className="uppercase tracking-widest">
                 {language === 'HI' ? 'प्राकृतिक स्पेस और संतुलन' : 'MA PRINCIPLE · SPATIAL INTERVAL & EQUILIBRIUM'}
@@ -188,25 +188,25 @@ export const AboutUs: React.FC<AboutUsProps> = ({
             <div className="flex flex-wrap items-center gap-4 pt-2">
               <button
                 onClick={onStartAssessment}
-                className="bg-[#FFF04B] hover:bg-[#FEE135] text-[#181816] px-6 py-3.5 rounded-2xl text-xs font-clinical-mono uppercase tracking-wider font-bold border-2 border-[#181816] transition-all flex items-center gap-2 cursor-pointer shadow-sm hover:scale-[1.02] active:scale-[0.98]"
+                className="ui-btn ui-btn-primary"
               >
                 <span>{t('reserveSession')}</span>
-                <ArrowRight size={13} className="text-[#181816]" />
+                <ArrowRight size={13} />
               </button>
 
               <button
                 onClick={onNavigateContact}
-                className="bg-white hover:bg-[#FEF9C3] text-[#181816] px-6 py-3.5 rounded-2xl text-xs font-clinical-mono uppercase tracking-wider font-bold border border-[#E8E3CE] hover:border-[#181816] transition-all flex items-center gap-2 cursor-pointer"
+                className="ui-btn ui-btn-secondary"
               >
                 <span>{language === 'HI' ? 'क्लिनिक केंद्र देखें' : 'Explore Mumbai Clinics'}</span>
-                <Compass size={14} className="text-[#7A766E]" />
+                <Compass size={14} />
               </button>
             </div>
           </div>
 
           {/* Right Column (5 cols): Photographic Sanctuary Showcase */}
           <div className="lg:col-span-5 relative">
-            <div className="absolute -top-4 -right-4 w-full h-full bg-[#FEF9C3] rounded-3xl -z-10 border border-[#E8E3CE] transform rotate-1" />
+            <div className="absolute -top-4 -right-4 w-full h-full bg-[#F2F0EB] rounded-3xl -z-10 border border-[#E3DED3] transform rotate-1" />
             
             <div className="bg-white p-3 rounded-3xl border-2 border-[#E8E3CE] real-shadow-xl overflow-hidden group">
               <div className="relative aspect-4/3 rounded-2xl overflow-hidden">
@@ -218,8 +218,8 @@ export const AboutUs: React.FC<AboutUsProps> = ({
                 />
                 
                 {/* Floating Architectural Annotation Tag */}
-                <div className="absolute bottom-3 left-3 bg-[#181816]/95 backdrop-blur-md text-[#FFF04B] px-3 py-1.5 rounded-xl border border-white/20 text-[11px] font-clinical-mono flex items-center gap-2">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#FFF04B] animate-pulse" />
+                <div className="absolute bottom-3 left-3 bg-[#1F1F1F]/95 backdrop-blur-md text-[#F7F4EE] px-3 py-1.5 rounded-xl border border-white/20 text-[11px] font-clinical-mono flex items-center gap-2">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#1F4E45] animate-pulse" />
                   <span>Bandra West &amp; BKC Movement Lab</span>
                 </div>
               </div>
@@ -265,12 +265,12 @@ export const AboutUs: React.FC<AboutUsProps> = ({
                     onClick={() => setActivePrinciple(idx)}
                     className={`w-full text-left p-4.5 rounded-2xl border transition-all duration-200 cursor-pointer flex items-center justify-between gap-3 ${
                       isSelected
-                        ? 'bg-[#FEF9C3] border-2 border-[#181816] real-shadow-sm scale-[1.01]'
-                        : 'bg-white border-[#E8E3CE] hover:bg-[#FDFBF0] hover:border-[#181816]'
+                        ? 'bg-[#F4E8E4] border-2 border-[#8C3B2F] real-shadow-sm scale-[1.01]'
+                        : 'bg-white border-[#E3DED3] hover:bg-[#F7F4EE] hover:border-[#8C3B2F]'
                     }`}
                   >
                     <div className="flex items-center gap-3.5 min-w-0">
-                      <span className="w-7 h-7 rounded-xl bg-[#181816] text-[#FFF04B] font-clinical-mono text-xs font-bold flex items-center justify-center shrink-0">
+                      <span className="w-7 h-7 rounded-xl bg-[#1F4E45] text-white font-clinical-mono text-xs font-bold flex items-center justify-center shrink-0">
                         {p.num}
                       </span>
                       <div className="truncate">
@@ -309,7 +309,7 @@ export const AboutUs: React.FC<AboutUsProps> = ({
                       </span>
                     </div>
 
-                    <span className="text-xs font-clinical-mono font-bold bg-[#FFF04B] text-[#181816] px-3 py-1 rounded-full border border-[#181816]">
+                    <span className="text-xs font-clinical-mono font-bold bg-[#8C3B2F] text-white px-3 py-1 rounded-full border border-[#8C3B2F]">
                       {language === 'HI' ? clinicalPrinciples[activePrinciple].metricHI : clinicalPrinciples[activePrinciple].metricEN}
                     </span>
                   </div>
@@ -322,7 +322,7 @@ export const AboutUs: React.FC<AboutUsProps> = ({
                     {language === 'HI' ? clinicalPrinciples[activePrinciple].meaningHI : clinicalPrinciples[activePrinciple].meaningEN}
                   </p>
 
-                  <div className="bg-[#FDFBF0] p-4 rounded-2xl border border-[#E8E3CE] flex items-center justify-between gap-4">
+                  <div className="bg-[#F7F4EE] p-4 rounded-2xl border border-[#E3DED3] flex items-center justify-between gap-4">
                     <div className="text-xs font-clinical-mono text-[#5A5750]">
                       {language === 'HI' 
                         ? 'प्रत्येक सत्र में 1-on-1 डॉक्टर देखरेख और निरंतर रिकवरी ट्रैकिंग'
@@ -330,7 +330,7 @@ export const AboutUs: React.FC<AboutUsProps> = ({
                     </div>
                     <button
                       onClick={onStartAssessment}
-                      className="bg-[#181816] text-[#FFF04B] px-4 py-2 rounded-xl text-xs font-clinical-mono font-bold hover:bg-[#2A2A26] transition-colors cursor-pointer shrink-0"
+                      className="ui-btn ui-btn-primary px-4 py-2 text-[10px]"
                     >
                       {t('quickBookBtn')}
                     </button>
@@ -394,7 +394,7 @@ export const AboutUs: React.FC<AboutUsProps> = ({
 
             <button
               onClick={onStartAssessment}
-              className="bg-[#FFF04B] hover:bg-[#FEE135] text-[#181816] px-6 py-3.5 rounded-2xl text-xs font-clinical-mono uppercase tracking-wider font-bold border-2 border-[#181816] transition-all flex items-center gap-2 cursor-pointer shrink-0 shadow-sm hover:scale-105 active:scale-95"
+              className="ui-btn ui-btn-primary shrink-0"
             >
               <span>{t('reserveSession')}</span>
               <ArrowRight size={14} className="text-[#181816]" />

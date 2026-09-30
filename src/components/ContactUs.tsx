@@ -31,7 +31,7 @@ export function ContactUs({ onNavigateHome, onStartAssessment }: ContactUsProps)
   }
 
   return (
-    <section id="contact-us" className="relative py-16 md:py-20 border-t border-[#E5E1D8] bg-[#F9F8F5] bg-washi-grain">
+    <section id="contact-us" className="relative py-16 md:py-20 border-t border-[#E3DED3] bg-[#F7F4EE] bg-washi-grain">
       <div className="absolute inset-0 bg-grid-subtle opacity-30" />
 
       <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -56,7 +56,7 @@ export function ContactUs({ onNavigateHome, onStartAssessment }: ContactUsProps)
           <button
             type="button"
             onClick={() => onNavigateHome?.()}
-            className="bg-[#FFF04B] hover:bg-[#FFF79A] text-[#181816] font-clinical-mono text-[11px] font-extrabold uppercase tracking-wider px-6 py-3 rounded-2xl transition-all duration-150 real-shadow-sm hover:real-shadow-md flex items-center justify-center gap-2 shrink-0 cursor-pointer border border-[#FFF04B] hover:border-[#FFF79A] hover:scale-105 active:scale-95"
+            className="ui-btn ui-btn-secondary"
           >
             <ArrowRight size={14} className="-rotate-45" />
             <span>Back to top</span>
@@ -64,9 +64,9 @@ export function ContactUs({ onNavigateHome, onStartAssessment }: ContactUsProps)
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-          <section className="bg-white border-2 border-neutral-200 hover:border-[#181816] hover:-translate-y-1 rounded-3xl p-8 sm:p-10 real-shadow-sm hover:real-shadow-xl flex flex-col justify-between transition-all duration-150 group">
+          <section className="bg-white border-2 border-neutral-200 hover:border-[#8C3B2F] hover:-translate-y-1 rounded-3xl p-8 sm:p-10 real-shadow-sm hover:real-shadow-xl flex flex-col justify-between transition-all duration-150 group">
             <div className="flex items-center justify-between mb-6">
-              <span className="inline-flex items-center justify-center w-12 h-12 rounded-2xl bg-[#F6EEDF] border border-[#C59E5F]/50 text-[#8C6D34]">
+              <span className="inline-flex items-center justify-center w-12 h-12 rounded-2xl bg-[#F4E8E4] border border-[#8C3B2F]/30 text-[#8C3B2F]">
                 <ClipboardCheck size={22} />
               </span>
               <span className="font-clinical-mono text-[11px] uppercase tracking-[0.2em] text-neutral-500 font-extrabold">
@@ -92,7 +92,7 @@ export function ContactUs({ onNavigateHome, onStartAssessment }: ContactUsProps)
                 <button
                   type="button"
                   onClick={() => onStartAssessment?.('knee')}
-                  className="bg-[#FFF04B] hover:bg-[#FFF79A] text-[#181816] font-clinical-mono text-[11px] font-extrabold uppercase tracking-wider px-6 py-3 rounded-2xl transition-all duration-150 real-shadow-sm hover:real-shadow-md flex items-center justify-center gap-2 shrink-0 cursor-pointer border border-[#FFF04B] hover:border-[#FFF79A] hover:scale-105 active:scale-95"
+                  className="ui-btn ui-btn-primary"
                 >
                   <span>Start assessment</span>
                   <ArrowRight size={14} />
@@ -100,7 +100,7 @@ export function ContactUs({ onNavigateHome, onStartAssessment }: ContactUsProps)
                 <button
                   type="button"
                   onClick={() => onNavigateHome?.()}
-                  className="bg-white hover:bg-neutral-100 text-neutral-950 border-2 border-neutral-900 font-clinical-mono text-[11px] font-extrabold uppercase tracking-wider px-6 py-3 rounded-2xl transition-all cursor-pointer real-shadow-xs hover:real-shadow-md"
+                  className="ui-btn ui-btn-secondary"
                 >
                   <span>Explore care</span>
                 </button>
@@ -108,7 +108,7 @@ export function ContactUs({ onNavigateHome, onStartAssessment }: ContactUsProps)
             </div>
           </section>
 
-          <section className="bg-[#FAFAF8] border-2 border-neutral-200 hover:border-[#181816] hover:-translate-y-1 rounded-3xl p-8 sm:p-10 real-shadow-sm hover:real-shadow-xl flex flex-col justify-between transition-all duration-150 group">
+          <section className="bg-[#F7F4EE] border-2 border-neutral-200 hover:border-[#8C3B2F] hover:-translate-y-1 rounded-3xl p-8 sm:p-10 real-shadow-sm hover:real-shadow-xl flex flex-col justify-between transition-all duration-150 group">
             <div className="flex items-center justify-between mb-6">
               <span className="inline-flex items-center justify-center w-12 h-12 rounded-2xl bg-white border border-[#E5E1D8] text-[#8C6D34]">
                 <Headphones size={22} />
@@ -150,7 +150,7 @@ export function ContactUs({ onNavigateHome, onStartAssessment }: ContactUsProps)
                     required
                     value={fullName}
                     onChange={(e) => setFullName(e.target.value)}
-                    className="w-full border border-[#E5E1D8] bg-white rounded-2xl px-4 py-3 text-sm text-neutral-800 font-editorial-sans outline-none transition-all focus:border-[#C59E5F] focus:ring-2 focus:ring-[#C59E5F]/30"
+                    className="w-full border border-[#E3DED3] bg-white rounded-2xl px-4 py-3 text-sm text-neutral-800 font-editorial-sans outline-none transition-all focus:border-[#8C3B2F] focus:ring-2 focus:ring-[#8C3B2F]/20"
                   />
                   <label className="sr-only" htmlFor="phone">Phone number</label>
                   <input
@@ -160,7 +160,7 @@ export function ContactUs({ onNavigateHome, onStartAssessment }: ContactUsProps)
                     required
                     value={phone}
                     onChange={(e) => setPhone(e.target.value)}
-                    className="w-full border border-[#E5E1D8] bg-white rounded-2xl px-4 py-3 text-sm text-neutral-800 font-editorial-sans outline-none transition-all focus:border-[#C59E5F] focus:ring-2 focus:ring-[#C59E5F]/30"
+                    className="w-full border border-[#E3DED3] bg-white rounded-2xl px-4 py-3 text-sm text-neutral-800 font-editorial-sans outline-none transition-all focus:border-[#8C3B2F] focus:ring-2 focus:ring-[#8C3B2F]/20"
                   />
                   <label className="sr-only" htmlFor="notes">Clinical notes</label>
                   <textarea
@@ -169,7 +169,7 @@ export function ContactUs({ onNavigateHome, onStartAssessment }: ContactUsProps)
                     rows={4}
                     value={notes}
                     onChange={(e) => setNotes(e.target.value)}
-                    className="w-full border border-[#E5E1D8] bg-white rounded-2xl px-4 py-3 text-sm text-neutral-800 font-editorial-sans outline-none transition-all resize-none focus:border-[#C59E5F] focus:ring-2 focus:ring-[#C59E5F]/30"
+                    className="w-full border border-[#E3DED3] bg-white rounded-2xl px-4 py-3 text-sm text-neutral-800 font-editorial-sans outline-none transition-all resize-none focus:border-[#8C3B2F] focus:ring-2 focus:ring-[#8C3B2F]/20"
                   />
                 </div>
 
@@ -182,11 +182,11 @@ export function ContactUs({ onNavigateHome, onStartAssessment }: ContactUsProps)
                 <button
                   type="submit"
                   disabled={loading}
-                  className="bg-[#FFF04B] hover:bg-[#FFF79A] text-[#181816] font-clinical-mono text-[11px] font-extrabold uppercase tracking-wider px-6 py-3.5 rounded-2xl transition-all duration-150 real-shadow-sm hover:real-shadow-md flex items-center justify-center gap-2 shrink-0 cursor-pointer border border-[#FFF04B] hover:border-[#FFF79A] hover:scale-105 active:scale-95 disabled:opacity-60"
+                  className="ui-btn ui-btn-primary w-full sm:w-auto disabled:opacity-60 disabled:cursor-not-allowed"
                 >
-                  <UserRound size={15} className="text-[#181816]" />
+                  <UserRound size={15} />
                   <span>{loading ? 'Sending...' : 'Send Inquiry'}</span>
-                  <ArrowRight size={14} className="text-[#181816]" />
+                  <ArrowRight size={14} />
                 </button>
               </form>
             )}

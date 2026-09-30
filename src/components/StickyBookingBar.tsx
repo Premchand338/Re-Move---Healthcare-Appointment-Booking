@@ -30,16 +30,16 @@ export function StickyBookingBar({ onQuickBook }: StickyBookingBarProps) {
   return (
     <div className="fixed inset-x-0 bottom-0 z-40 sm:inset-x-auto sm:right-6 sm:bottom-6">
       {/* Mobile: full-width slim bar */}
-      <div className="sm:hidden bg-[#181816] text-[#F9F8F5] px-4 py-3 flex items-center justify-between border-t border-[#C59E5F]/40">
+      <div className="sm:hidden bg-[#1F1F1F] text-[#F7F4EE] px-4 py-3 flex items-center justify-between border-t border-[#8C3B2F]/50">
         <div className="min-w-0">
           <p className="text-sm font-editorial-serif truncate">{therapist.fullName}</p>
-          <p className="text-[11px] font-clinical-mono text-[#DFBA73]">
+          <p className="text-[11px] font-clinical-mono text-[#F7F4EE]/80">
             {therapist.rating ? `★ ${therapist.rating}` : 'Available'} · Next: {firstSlot}
           </p>
         </div>
         <button
           onClick={() => onQuickBook(therapist, firstSlot)}
-          className="shrink-0 ml-3 bg-[#C59E5F] text-[#181816] text-xs font-bold uppercase tracking-wide px-4 py-2 rounded-full"
+          className="ui-btn ui-btn-primary ui-btn-small ml-3 shrink-0"
         >
           Book
         </button>
@@ -64,7 +64,7 @@ export function StickyBookingBar({ onQuickBook }: StickyBookingBarProps) {
         </div>
         <button
           onClick={() => onQuickBook(therapist, firstSlot)}
-          className="shrink-0 bg-[#181816] hover:bg-[#2A2A26] text-[#F9F8F5] text-xs font-bold uppercase tracking-wide px-4 py-2.5 rounded-xl transition-colors"
+          className="ui-btn ui-btn-primary ui-btn-small shrink-0"
         >
           Book
         </button>

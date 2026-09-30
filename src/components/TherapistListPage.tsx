@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { ArrowRight, CheckCircle2, Clock3, MapPin, Star, X } from 'lucide-react'
 import { api } from '../lib/api'
 import type { Therapist } from '../types/therapist'
 import { TherapistCard } from '../components/TherapistCard'
@@ -34,7 +35,7 @@ export function SpecialistFaculty({
 
   if (loading) {
     return (
-      <section className="py-16 px-6 bg-[#F7F4EA]">
+      <section className="py-16 px-6 bg-[#F7F4EE]">
         <div className="mx-auto max-w-6xl text-center font-clinical-mono text-sm text-neutral-500 animate-pulse">
           Loading clinical faculty...
         </div>
@@ -44,7 +45,7 @@ export function SpecialistFaculty({
 
   if (error) {
     return (
-      <section className="py-16 px-6 bg-[#F7F4EA]">
+      <section className="py-16 px-6 bg-[#F7F4EE]">
         <div className="mx-auto max-w-6xl text-center font-clinical-mono text-sm text-red-600 bg-red-50 p-4 rounded-xl border border-red-200">
           Error loading specialists: {error}
         </div>
@@ -53,15 +54,15 @@ export function SpecialistFaculty({
   }
 
   return (
-    <section id="specialists" className="py-16 px-6 bg-[#F7F4EA]">
+    <section id="specialists" className="py-16 px-6 bg-[#F7F4EE]">
       <div className="mx-auto max-w-6xl">
         <div className="flex items-end justify-between gap-6">
           <div>
-            <span className="font-clinical-mono uppercase text-xs tracking-[0.24em] text-[#9B6A3D]">
-              Section 02
+            <span className="font-clinical-mono uppercase text-xs tracking-[0.2em] text-[#8C3B2F]">
+              Specialist directory
             </span>
-            <h2 className="mt-3 font-heading text-4xl font-bold tracking-tight text-neutral-900">
-              Clinical Faculty
+            <h2 className="mt-2 font-editorial-serif text-4xl font-normal text-[#1F1F1F]">
+              Meet your movement specialist
             </h2>
           </div>
           <span className="hidden md:block font-clinical-mono uppercase text-xs text-neutral-500">
@@ -77,10 +78,12 @@ export function SpecialistFaculty({
             return (
               <article
                 key={t.id}
-                className="rounded-3xl border border-neutral-200 bg-white p-6 shadow-sm transition-all duration-150 hover:border-[#181816] hover:-translate-y-1 hover:shadow-md flex flex-col"
+                className="group relative overflow-hidden rounded-2xl border border-[#E3DED3] bg-white p-5 shadow-sm transition-all duration-200 hover:-translate-y-1 hover:border-[#8C3B2F]/50 hover:shadow-lg flex flex-col"
               >
+                  <div className="absolute left-0 top-0 h-1 w-full bg-[#1F4E45] transition-colors group-hover:bg-[#8C3B2F]" />
                 {matchScore != null && matchScore > 0 && (
-                  <div className="mb-3 inline-flex w-fit items-center gap-1.5 rounded-full bg-emerald-50 border border-emerald-200 px-3 py-1 text-[11px] font-bold text-emerald-800">
+                    <div className="mb-4 inline-flex w-fit items-center gap-1.5 rounded-full bg-[#1F4E45]/8 border border-[#1F4E45]/20 px-3 py-1 text-[10px] font-clinical-mono font-bold uppercase tracking-wide text-[#1F4E45]">
+                      <CheckCircle2 size={13} />
                     {matchScore}% Match
                   </div>
                 )}
@@ -89,28 +92,28 @@ export function SpecialistFaculty({
                   <img
                     src={t.avatarUrl || 'https://via.placeholder.com/80'}
                     alt={t.fullName}
-                    className="h-16 w-16 rounded-full object-cover border border-neutral-200"
+                    className="h-[4.5rem] w-[4.5rem] rounded-2xl object-cover border border-[#E3DED3] shadow-sm"
                   />
                   <div className="min-w-0">
-                    <div className="font-heading text-lg font-bold text-neutral-950">
+                    <div className="font-editorial-serif text-xl font-bold text-[#1F1F1F]">
                       {t.fullName}
                     </div>
                     {t.degrees && (
-                      <div className="font-clinical-mono text-[11px] uppercase text-neutral-500">
+                      <div className="mt-1 font-clinical-mono text-[10px] uppercase tracking-wide text-[#5A5750]">
                         {t.degrees}
                       </div>
                     )}
                   </div>
                 </div>
 
-                <div className="mt-4 text-sm font-medium text-neutral-700">
+                <div className="mt-4 text-sm font-semibold text-[#1F1F1F]">
                   {t.specialization}
                 </div>
 
                 {hasStats && (
-                  <div className="mt-2 flex flex-wrap items-center gap-1.5 text-xs font-clinical-mono text-neutral-600">
+                  <div className="mt-3 flex flex-wrap items-center gap-2 text-xs font-clinical-mono text-[#5A5750]">
                     {t.rating && (
-                      <span className="text-amber-600 font-bold">★ {t.rating}</span>
+                      <span className="inline-flex items-center gap-1 font-bold text-[#8C3B2F]"><Star size={13} fill="currentColor" /> {t.rating}</span>
                     )}
                     {t.reviewCount != null && t.reviewCount > 0 && (
                       <span className="text-neutral-400">({t.reviewCount} reviews)</span>
@@ -125,7 +128,7 @@ export function SpecialistFaculty({
                 )}
 
                 {t.clinicLocation && (
-                  <div className="mt-1 text-xs text-neutral-500">{t.clinicLocation}</div>
+                  <div className="mt-2 flex items-center gap-1.5 text-xs text-[#5A5750]"><MapPin size={13} className="shrink-0 text-[#8C3B2F]" />{t.clinicLocation}</div>
                 )}
 
                 {t.focusTags && t.focusTags.length > 0 && (
@@ -133,7 +136,7 @@ export function SpecialistFaculty({
                     {t.focusTags.map((tag) => (
                       <span
                         key={tag}
-                        className="rounded-full border border-neutral-200 px-3 py-1 text-[10px] font-bold uppercase tracking-wide text-neutral-600"
+                        className="rounded-full border border-[#E3DED3] bg-[#F7F4EE] px-3 py-1 text-[10px] font-clinical-mono font-bold uppercase tracking-wide text-[#5A5750]"
                       >
                         {tag}
                       </span>
@@ -142,8 +145,8 @@ export function SpecialistFaculty({
                 )}
 
                 {t.pricePerSession != null && (
-                  <div className="mt-4 text-sm font-clinical-mono text-neutral-800">
-                    ₹{t.pricePerSession} <span className="text-neutral-400 text-xs">/ session</span>
+                  <div className="mt-4 border-t border-[#E3DED3] pt-3 text-sm font-clinical-mono font-bold text-[#1F1F1F]">
+                    ₹{t.pricePerSession} <span className="font-normal text-[#5A5750] text-xs">/ session</span>
                   </div>
                 )}
 
@@ -152,7 +155,7 @@ export function SpecialistFaculty({
                     {t.availableSlots.slice(0, 4).map((slot) => (
                       <span
                         key={slot}
-                        className="rounded-lg border border-neutral-200 px-2.5 py-1 text-[11px] font-clinical-mono text-neutral-600"
+                        className="rounded-lg border border-[#E3DED3] bg-white px-2.5 py-1 text-[11px] font-clinical-mono text-[#5A5750]"
                       >
                         {slot}
                       </span>
@@ -160,18 +163,18 @@ export function SpecialistFaculty({
                   </div>
                 )}
 
-                <div className="mt-auto pt-6 flex gap-3">
+                <div className="mt-auto pt-5 flex gap-2">
                   <button
-                    className="rounded-full border border-neutral-900 px-4 py-2 text-xs font-bold uppercase text-neutral-900 hover:bg-neutral-900 hover:text-white transition-colors cursor-pointer"
+                    className="ui-btn ui-btn-secondary ui-btn-small flex-1"
                     onClick={() => onOpenDossier(t)}
                   >
-                    Dossier
+                    Profile
                   </button>
                   <button
-                    className="rounded-full bg-[#16291F] px-4 py-2 text-xs font-bold uppercase text-white hover:bg-[#233B28] transition-colors cursor-pointer"
+                    className="ui-btn ui-btn-primary ui-btn-small flex-1"
                     onClick={() => onBookAppointment(t, t.availableSlots?.[0] || '6:30 PM')}
                   >
-                    Book
+                    Book visit
                   </button>
                 </div>
               </article>
@@ -215,87 +218,120 @@ export function SpecialistDossierModal({
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4 backdrop-blur-sm">
-      <div className="w-full max-w-2xl rounded-3xl bg-[#FDFBF7] p-7 shadow-2xl border border-neutral-200">
-        <div className="flex items-start justify-between">
-          <div className="flex items-center gap-4">
+      <div className="w-full max-w-3xl overflow-hidden rounded-3xl bg-[#F7F4EE] shadow-2xl border border-[#E3DED3]">
+        <div className="relative flex items-center justify-between gap-5 bg-[#1F1F1F] px-6 py-6 text-[#F7F4EE] sm:px-8">
+          <div className="flex min-w-0 items-center gap-5">
             <img
               src={
                 specialist.avatarUrl ||
                 'https://via.placeholder.com/80'
               }
               alt={specialist.fullName}
-              className="h-20 w-20 rounded-full object-cover border border-neutral-200"
+              className="h-20 w-20 shrink-0 rounded-2xl object-cover border-2 border-white/25 shadow-lg"
             />
 
-            <div>
-              <div className="font-heading text-2xl font-bold text-neutral-950">
+            <div className="min-w-0">
+              <div className="mb-1 font-clinical-mono text-[10px] font-bold uppercase tracking-[0.18em] text-[#F7F4EE]/70">
+                Specialist profile
+              </div>
+              <div className="truncate font-editorial-serif text-2xl font-bold text-white sm:text-3xl">
                 {specialist.fullName}
               </div>
 
-              <div className="font-clinical-mono text-xs uppercase text-neutral-500">
+              <div className="mt-1 font-clinical-mono text-[10px] uppercase tracking-wide text-[#F7F4EE]/70 sm:text-xs">
                 {specialist.degrees}
               </div>
             </div>
           </div>
 
           <button
-            className="text-2xl text-neutral-500 hover:text-neutral-900 transition-colors cursor-pointer"
+            className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-white/20 text-white/70 transition-colors hover:bg-white/10 hover:text-white cursor-pointer"
             onClick={onClose}
             aria-label="Close dossier"
           >
-            ×
+            <X size={18} />
           </button>
         </div>
 
-        <div className="mt-6 grid gap-3">
-          <div className="font-clinical-mono text-xs uppercase text-[#9B6A3D]">
-            {specialist.title}
+        <div className="p-6 sm:p-8">
+          <div className="mb-5 flex flex-wrap items-center gap-2">
+            <span className="rounded-full bg-[#F4E8E4] px-3 py-1 font-clinical-mono text-[10px] font-bold uppercase tracking-wide text-[#8C3B2F]">
+              {specialist.title || specialist.specialization}
+            </span>
+            {specialist.active && (
+              <span className="inline-flex items-center gap-1.5 rounded-full border border-[#1F4E45]/20 bg-[#1F4E45]/8 px-3 py-1 font-clinical-mono text-[10px] font-bold uppercase tracking-wide text-[#1F4E45]">
+                <span className="h-1.5 w-1.5 rounded-full bg-[#1F4E45]" /> Available
+              </span>
+            )}
           </div>
 
-          <div className="text-sm leading-6 text-neutral-700">
+          <div className="grid grid-cols-3 gap-2 sm:gap-3">
+            <div className="rounded-xl border border-[#E3DED3] bg-white p-3 sm:p-4">
+              <div className="font-editorial-serif text-xl font-bold text-[#1F1F1F]">{specialist.experienceYears ?? '—'}<span className="ml-1 text-xs font-sans font-normal text-[#5A5750]">yrs</span></div>
+              <div className="mt-1 font-clinical-mono text-[9px] uppercase tracking-wide text-[#5A5750] sm:text-[10px]">Experience</div>
+            </div>
+            <div className="rounded-xl border border-[#E3DED3] bg-white p-3 sm:p-4">
+              <div className="flex items-center gap-1 font-editorial-serif text-xl font-bold text-[#1F1F1F]"><Star size={15} className="text-[#8C3B2F]" fill="currentColor" />{specialist.rating ?? '—'}</div>
+              <div className="mt-1 font-clinical-mono text-[9px] uppercase tracking-wide text-[#5A5750] sm:text-[10px]">{specialist.reviewCount ?? 0} reviews</div>
+            </div>
+            <div className="rounded-xl border border-[#E3DED3] bg-white p-3 sm:p-4">
+              <div className="font-editorial-serif text-xl font-bold text-[#1F1F1F]">{specialist.pricePerSession != null ? `₹${specialist.pricePerSession}` : '—'}</div>
+              <div className="mt-1 font-clinical-mono text-[9px] uppercase tracking-wide text-[#5A5750] sm:text-[10px]">Per session</div>
+            </div>
+          </div>
+
+          <div className="mt-5 rounded-2xl border border-[#E3DED3] bg-white p-4 sm:p-5">
+            <div className="mb-2 font-clinical-mono text-[10px] font-bold uppercase tracking-[0.16em] text-[#8C3B2F]">Clinical approach</div>
+            <div className="text-sm leading-6 text-[#5A5750]">
             {specialist.clinicalFocus ||
               specialist.bio ||
               'No clinical focus available.'}
+            </div>
           </div>
 
-          <div className="flex flex-wrap gap-2">
+          <div className="mt-4 flex flex-wrap gap-2">
             {specialist.focusTags?.map((tag) => (
               <span
                 key={tag}
-                className="rounded-full border border-neutral-200 px-3 py-1 text-[10px] font-semibold uppercase text-neutral-700"
+                className="rounded-full border border-[#E3DED3] bg-[#F7F4EE] px-3 py-1.5 font-clinical-mono text-[9px] font-bold uppercase tracking-wide text-[#5A5750]"
               >
                 {tag}
               </span>
             ))}
           </div>
-        </div>
 
-        <div className="mt-6 flex flex-col sm:flex-row items-center justify-between gap-4 border-t border-neutral-200 pt-5">
-          <div className="flex flex-wrap gap-2 w-full sm:w-auto">
-            {specialist.availableSlots?.map((slot) => (
+          <div className="mt-6 border-t border-[#E3DED3] pt-5">
+            <div className="mb-3 flex items-center gap-2 font-clinical-mono text-[10px] font-bold uppercase tracking-[0.16em] text-[#5A5750]">
+              <Clock3 size={14} className="text-[#8C3B2F]" /> Select an appointment time
+            </div>
+            <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+              <div className="flex flex-wrap gap-2">
+                {specialist.availableSlots?.map((slot) => (
+                  <button
+                    key={slot}
+                    className={`rounded-full border px-3 py-2 font-clinical-mono text-[10px] font-bold uppercase transition-colors cursor-pointer ${
+                      selectedSlot === slot
+                        ? 'border-[#8C3B2F] bg-[#8C3B2F] text-white'
+                        : 'border-[#E3DED3] bg-white text-[#5A5750] hover:border-[#8C3B2F] hover:text-[#8C3B2F]'
+                    }`}
+                    onClick={() => setSelectedSlot(slot)}
+                  >
+                    {slot}
+                  </button>
+                ))}
+              </div>
+
               <button
-                key={slot}
-                className={`rounded-full px-3 py-2 text-xs font-bold uppercase transition-colors cursor-pointer ${
-                  selectedSlot === slot
-                    ? 'bg-neutral-950 text-white'
-                    : 'border border-neutral-300 text-neutral-700 hover:bg-neutral-100'
-                }`}
-                onClick={() => setSelectedSlot(slot)}
+                className="ui-btn ui-btn-primary w-full sm:w-auto"
+                onClick={() => {
+                  onBook(specialist, selectedSlot)
+                  onClose()
+                }}
               >
-                {slot}
+                <span>Book appointment</span><ArrowRight size={14} />
               </button>
-            ))}
+            </div>
           </div>
-
-          <button
-            className="w-full sm:w-auto rounded-full bg-[#16291F] px-5 py-3 text-xs font-bold uppercase text-white hover:bg-[#233B28] transition-colors cursor-pointer"
-            onClick={() => {
-              onBook(specialist, selectedSlot)
-              onClose()
-            }}
-          >
-            Book Appointment
-          </button>
         </div>
       </div>
     </div>

@@ -1,10 +1,12 @@
 import { Router } from 'express'
 import { pool } from '../db'
 import { requireAuth, requireRole } from '../middleware/auth'
+import { validate } from '../middleware/validate'
+import { inquirySchema } from '../../../shared/validationSchemas'
 
 const router = Router()
 
-router.post('/', async (req, res, next) => {
+router.post('/', validate(inquirySchema), async (req, res, next) => {
   try {
     const { fullName, phone, notes } = req.body
     const { rows } = await pool.query(

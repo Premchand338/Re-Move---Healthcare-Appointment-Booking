@@ -1,9 +1,10 @@
 import { Router } from 'express'
 import type { PoolClient } from 'pg'
 import { pool } from '../db'
-import type { Appointment, AppointmentInput } from '../types/appointment'
-import { validateAppointmentInput } from '../utils/appointmentValidation'
+import type { Appointment } from '../types/appointment'
 import { requireAuth, requireRole } from '../middleware/auth'
+import { validate } from '../middleware/validate'
+import { appointmentCreateSchema, appointmentUpdateSchema } from '../../../shared/validationSchemas'
 
 
 const router = Router()
@@ -54,16 +55,16 @@ async function assertSlotAvailable(client: PoolClient, therapistId: string, serv
   if (conflict.rows[0]) apiError(409, 'SLOT_CONFLICT', 'Therapist is already booked during this time')
 }
 
-function parseId(value: string): number {
+function parseId(value: string | string[] | undefined): number {
   const id = Number(value)
   if (Number.isSafeInteger(id) && id > 0) return id
   return apiError(400, 'INVALID_ID', 'Appointment id must be a positive integer')
 }
 
-router.post('/', requireAuth, requireRole('admin', 'patient'), async (req, res, next) => {
+router.post('/', requireAuth, requireRole('admin', 'patient'), validate(appointmentCreateSchema), async (req, res, next) => {
   const client = await pool.connect()
   try {
-    const input = validateAppointmentInput(req.body as AppointmentInput, true)
+    const input = req.body
     await client.query('BEGIN')
     await assertBookable(client, input.patientId!, input.therapistId!, input.serviceId!)
     await assertSlotAvailable(client, input.therapistId!, input.serviceId!, input.appointmentAt!)
@@ -105,11 +106,11 @@ router.get('/:id', async (req, res, next) => {
   } catch (error) { next(error) }
 })
 
-router.patch('/:id', async (req, res, next) => {
+router.patch('/:id', validate(appointmentUpdateSchema), async (req, res, next) => {
   const client = await pool.connect()
   try {
     const id = parseId(req.params.id)
-    const input = validateAppointmentInput(req.body as AppointmentInput, false)
+    const input = req.body
     await client.query('BEGIN')
     const existing = await client.query<Pick<Appointment, 'therapistId' | 'serviceId' | 'status'>>(
       'SELECT therapist_id AS "therapistId", service_id AS "serviceId", status FROM appointments WHERE appointment_id = $1 FOR UPDATE', [id],

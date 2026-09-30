@@ -1,9 +1,10 @@
 import { Router } from 'express'
 import { pool } from '../db'
 import type { Therapist, TherapistInput } from '../types/therapist'
-import { validateTherapistInput } from '../utils/therapistValidation'
 import { assertNoActiveAppointments } from '../utils/appointmentGuard'
 import { requireAuth, requireRole } from '../middleware/auth'
+import { validate } from '../middleware/validate'
+import { therapistCreateSchema, therapistUpdateSchema } from '../../../shared/validationSchemas'
 
 const router = Router()
 
@@ -84,12 +85,10 @@ router.post(
   '/',
   requireAuth,
   requireRole('admin'),
+  validate(therapistCreateSchema),
   async (req, res, next) => {
     try {
-      const input = validateTherapistInput(
-        req.body,
-        true,
-      )
+      const input = req.body
 
       const keys = Object.keys(input).filter(
         (key) => key in sqlColumns,
@@ -185,6 +184,7 @@ router.patch(
   '/:id',
   requireAuth,
   requireRole('admin'),
+  validate(therapistUpdateSchema),
   async (req, res, next) => {
     try {
       const rawId = req.params.id
@@ -201,10 +201,7 @@ router.patch(
 
       const id = parseId(rawId)
 
-      const input = validateTherapistInput(
-        req.body,
-        false,
-      )
+      const input = req.body
 
       const entries = Object.entries(input)
         .filter(([key]) => key in sqlColumns)

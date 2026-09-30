@@ -48,7 +48,7 @@ export const Header: React.FC<HeaderProps> = ({
   };
 
   return (
-    <header className="sticky top-0 z-40 bg-[#F9F8F5]/95 backdrop-blur-md border-b border-[#E5E1D8] transition-all real-shadow-xs">
+    <header className="sticky top-0 z-40 bg-[#F7F4EE]/95 backdrop-blur-md border-b border-[#E3DED3] transition-all real-shadow-xs">
       {/* Main Navigation Bar */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-18 flex items-center justify-between gap-3">
         
@@ -83,16 +83,16 @@ export const Header: React.FC<HeaderProps> = ({
                 onClick={() => handleNavClick(link.id)}
                 className={`relative px-3.5 py-2 rounded-lg text-xs tracking-wider transition-all duration-200 cursor-pointer group whitespace-nowrap ${
                   isActive
-                    ? 'text-[#181816] font-bold bg-[#FFF04B]'
-                    : 'text-[#4A4843] hover:text-[#181816] hover:bg-[#EFECE3]/70'
+                    ? 'text-white font-bold bg-[#8C3B2F]'
+                    : 'text-[#5A5750] hover:text-[#1F1F1F] hover:bg-[#F2F0EB]/70'
                 }`}
               >
                 <span>{link.label}</span>
                 <span
                   className={`absolute bottom-1 left-3.5 right-3.5 h-[1.5px] rounded-full transition-all duration-200 ${
                     isActive
-                      ? 'bg-[#181816]'
-                      : 'bg-[#C59E5F] opacity-0 group-hover:opacity-80 scale-x-75 group-hover:scale-x-100'
+                      ? 'bg-[#8C3B2F]'
+                      : 'bg-[#8C3B2F] opacity-0 group-hover:opacity-80 scale-x-75 group-hover:scale-x-100'
                   }`}
                 />
               </button>
@@ -107,10 +107,10 @@ export const Header: React.FC<HeaderProps> = ({
           {isAdmin && (
             <button
               onClick={() =>navigate('/admin')}
-              className="hidden sm:flex items-center gap-2 px-4 py-2 rounded-full bg-[#181816] text-[#F9F8F5] text-[11px] font-clinical-mono font-bold uppercase tracking-wider hover:bg-[#2A2A26] transition-all cursor-pointer border border-[#C59E5F] hover:border-[#DFBA73]"
+              className="hidden sm:flex items-center gap-2 px-4 py-2 rounded-full bg-[#1F4E45] text-white text-[11px] font-clinical-mono font-bold uppercase tracking-wider hover:bg-[#173F36] transition-all cursor-pointer border border-[#1F4E45] hover:border-[#173F36]"
               title="Manage Specialists"
             >
-              <ShieldCheck size={14} className="text-[#C59E5F]" />
+              <ShieldCheck size={14} className="text-white" />
               <span>Admin</span>
             </button>
           )}
@@ -122,8 +122,8 @@ export const Header: React.FC<HeaderProps> = ({
               onClick={() => setCurrentLang('EN')}
               className={`px-1.5 py-0.5 rounded-md text-[11px] font-semibold transition-all cursor-pointer ${
                 currentLang === 'EN'
-                  ? 'bg-[#FFF04B] text-[#181816] real-shadow-xs border-2 border-[#181816]'
-                  : 'text-[#7A766E] hover:text-[#181816]'
+                  ? 'bg-[#1F4E45] text-white real-shadow-xs border border-[#1F4E45]'
+                  : 'text-[#5A5750] hover:text-[#1F1F1F]'
               }`}
             >
               EN
@@ -133,8 +133,8 @@ export const Header: React.FC<HeaderProps> = ({
               onClick={() => setCurrentLang('HI')}
               className={`px-1.5 py-0.5 rounded-md text-[11px] font-semibold transition-all cursor-pointer ${
                 currentLang === 'HI'
-                  ? 'bg-[#FFF04B] text-[#181816] real-shadow-xs border-2 border-[#181816]'
-                  : 'text-[#7A766E] hover:text-[#181816]'
+                  ? 'bg-[#1F4E45] text-white real-shadow-xs border border-[#1F4E45]'
+                  : 'text-[#5A5750] hover:text-[#1F1F1F]'
               }`}
             >
               HI
@@ -145,7 +145,7 @@ export const Header: React.FC<HeaderProps> = ({
             <div className="relative flex items-center gap-2">
               <button
                 onClick={() => setShowLogoutMenu((prev) => !prev)}
-                className="flex h-10 w-10 items-center justify-center rounded-full bg-[#FFF04B] text-[#181816] border border-[#181816] font-editorial-serif text-lg font-bold shadow-sm cursor-pointer hover:bg-[#F8E86B] transition-all"
+                className="flex h-10 w-10 items-center justify-center rounded-full bg-[#1F4E45] text-white border border-[#1F4E45] font-editorial-serif text-lg font-bold shadow-sm cursor-pointer hover:bg-[#173F36] transition-all"
                 aria-label="Open user menu"
               >
                 {emailInitial}
@@ -162,7 +162,7 @@ export const Header: React.FC<HeaderProps> = ({
                       }}
                       className="w-full flex items-center gap-2 rounded-xl px-4 py-2.5 text-[#181816] font-clinical-mono text-[11px] font-bold uppercase tracking-wider hover:bg-[#EFECE3] transition-colors mb-1"
                     >
-                      <ShieldCheck size={14} className="text-[#C59E5F]" />
+                      <ShieldCheck size={14} className="text-[#8C3B2F]" />
                       <span>Admin Dashboard</span>
                     </button>
                   )}
@@ -174,7 +174,7 @@ export const Header: React.FC<HeaderProps> = ({
                     }}
                     className="w-full flex items-center justify-center gap-2 rounded-xl bg-[#181816] px-4 py-2.5 text-[#F9F8F5] font-clinical-mono text-[11px] font-bold uppercase tracking-wider transition hover:bg-[#252522]"
                   >
-                    <LogOut size={14} className="text-[#C59E5F]" />
+                    <LogOut size={14} className="text-[#F7F4EE]" />
                     <span>Logout</span>
                   </button>
                 </div>
@@ -184,10 +184,10 @@ export const Header: React.FC<HeaderProps> = ({
             <>
               <button
                 onClick={onLogin}
-                className="bg-[#FFF04B] hover:bg-[#F8E86B] text-[#181816] font-semibold text-xs tracking-wider px-5 sm:px-6 py-2.5 rounded-full transition-all duration-200 flex items-center gap-2 group cursor-pointer border border-[#181816] real-shadow-xs hover:border-[#181816] hover:scale-[1.02] active:scale-[0.98] mx-3"
+                className="ui-btn ui-btn-primary mx-3"
               >
-                <span className="font-clinical-mono">Login</span>
-                <ArrowRight size={13} className="text-[#181816] transition-transform group-hover:translate-x-0.5" />
+                <span>Login</span>
+                <ArrowRight size={13} />
               </button>
 
               {/* <button
@@ -223,7 +223,7 @@ export const Header: React.FC<HeaderProps> = ({
               }}
               className="w-full flex items-center gap-2 rounded-xl bg-[#181816] px-4 py-3 text-[#F9F8F5] font-clinical-mono text-xs font-bold uppercase tracking-wider transition hover:bg-[#252522]"
             >
-              <ShieldCheck size={16} className="text-[#C59E5F]" />
+              <ShieldCheck size={16} className="text-[#F7F4EE]" />
               <span>Admin Dashboard</span>
             </button>
           )}
@@ -236,7 +236,7 @@ export const Header: React.FC<HeaderProps> = ({
                 onClick={() => handleNavClick(link.id)}
                 className={`block w-full text-left py-2.5 px-3 rounded-xl font-bold transition-colors ${
                   isActive
-                    ? 'bg-[#FFF04B] text-[#181816] border-2 border-[#181816]'
+                    ? 'bg-[#1F4E45] text-white border border-[#1F4E45]'
                     : 'text-neutral-800 hover:text-black hover:bg-neutral-100'
                 }`}
               >
@@ -250,13 +250,13 @@ export const Header: React.FC<HeaderProps> = ({
             <div className="flex items-center gap-2">
               <button
                 onClick={() => setCurrentLang('EN')}
-                className={`px-2 py-1 rounded-md ${currentLang === 'EN' ? 'bg-[#FFF04B] text-[#181816] border-2 border-[#181816] font-bold' : 'text-neutral-600'}`}
+                className={`px-2 py-1 rounded-md ${currentLang === 'EN' ? 'bg-[#1F4E45] text-white border border-[#1F4E45] font-bold' : 'text-neutral-600'}`}
               >
                 English
               </button>
               <button
                 onClick={() => setCurrentLang('HI')}
-                className={`px-2 py-1 rounded-md ${currentLang === 'HI' ? 'bg-[#FFF04B] text-[#181816] border-2 border-[#181816] font-bold' : 'text-neutral-600'}`}
+                className={`px-2 py-1 rounded-md ${currentLang === 'HI' ? 'bg-[#1F4E45] text-white border border-[#1F4E45] font-bold' : 'text-neutral-600'}`}
               >
                 हिंदी
               </button>

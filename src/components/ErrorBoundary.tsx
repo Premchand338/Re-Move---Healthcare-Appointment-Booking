@@ -29,9 +29,9 @@ export class ErrorBoundary extends React.Component<Props, State> {
   public render(): ReactNode {
     if (this.state.hasError) {
       return (
-        <div className="min-h-screen flex items-center justify-center bg-[#FAFAF8] p-6 text-center">
-          <div className="max-w-md bg-white p-8 rounded-3xl border border-[#E5E1D8] real-shadow-xl">
-            <div className="w-12 h-12 rounded-2xl bg-[#181816] border border-[#C59E5F] flex items-center justify-center font-editorial-serif font-bold text-xl text-[#DFBA73] mx-auto mb-4">
+        <div className="min-h-screen flex items-center justify-center bg-[#F7F4EE] p-6 text-center">
+          <div className="max-w-md bg-white p-8 rounded-3xl border border-[#E3DED3] real-shadow-xl">
+            <div className="w-12 h-12 rounded-2xl bg-[#1F4E45] border border-[#1F4E45] flex items-center justify-center font-editorial-serif font-bold text-xl text-white mx-auto mb-4">
               K
             </div>
             <h2 className="font-editorial-serif text-2xl font-bold text-neutral-950 mb-2">
@@ -45,7 +45,7 @@ export class ErrorBoundary extends React.Component<Props, State> {
                 this.setState({ hasError: false, error: null });
                 window.location.reload();
               }}
-              className="bg-[#181816] hover:bg-[#2A2A26] text-[#F9F8F5] font-bold text-xs uppercase tracking-wider px-6 py-3 rounded-xl border border-[#C59E5F] hover:border-[#DFBA73] cursor-pointer"
+              className="ui-btn ui-btn-primary"
             >
               Reload Interface
             </button>

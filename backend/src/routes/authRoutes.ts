@@ -2,12 +2,14 @@ import { Router } from 'express'
 import bcrypt from 'bcrypt'
 import { pool } from '../db'
 import jwt, { type SignOptions } from 'jsonwebtoken'
+import { validate } from '../middleware/validate'
+import { loginSchema, registerSchema } from '../../../shared/validationSchemas'
 
 const router = Router()
 
 
 
-router.post('/register', async (req, res, next) => {
+router.post('/register', validate(registerSchema), async (req, res, next) => {
   try {
     const { email, password, role } = req.body
     const passwordHash = await bcrypt.hash(password, 10)
@@ -19,7 +21,7 @@ router.post('/register', async (req, res, next) => {
   } catch (error) { next(error) }
 })
 
-router.post('/login', async (req, res, next) => {
+router.post('/login', validate(loginSchema), async (req, res, next) => {
   try {
     const { email, password } = req.body
     const { rows } = await pool.query(`SELECT * FROM users WHERE email = $1`, [email])

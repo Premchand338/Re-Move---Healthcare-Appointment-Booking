@@ -1,6 +1,8 @@
 import { Router, Request } from 'express'
 import { pool } from '../db'
 import { requireAuth, requireRole, AuthRequest } from '../middleware/auth'
+import { validate } from '../middleware/validate'
+import { assessmentBookingSchema, assessmentCreateSchema } from '../../../shared/validationSchemas'
 
 const router = Router()
 
@@ -46,7 +48,7 @@ function convertSlotToTimestamp(slot: string): string {
 }
 
 // POST /assessments - Create standalone assessment
-router.post('/', requireAuth, requireRole('patient', 'admin'), async (req: Request, res, next) => {
+router.post('/', requireAuth, requireRole('patient', 'admin'), validate(assessmentCreateSchema), async (req: Request, res, next) => {
   try {
     const { patientId, bodyPart, triggers, sensation, duration, goals, carePreference } = req.body
     const { rows } = await pool.query(
@@ -185,7 +187,7 @@ router.post('/', requireAuth, requireRole('patient', 'admin'), async (req: Reque
 // })
 
 // POST /assessments/submit-with-booking
-router.post('/submit-with-booking', requireAuth, requireRole('patient', 'admin'), async (req: Request, res, next) => {
+router.post('/submit-with-booking', requireAuth, requireRole('patient', 'admin'), validate(assessmentBookingSchema), async (req: Request, res, next) => {
   const client = await pool.connect()
   try {
     const {
@@ -207,13 +209,6 @@ router.post('/submit-with-booking', requireAuth, requireRole('patient', 'admin')
       return res.status(401).json({
         success: false,
         error: { code: 'UNAUTHORIZED', message: 'User not authenticated' }
-      })
-    }
-
-    if (!bodyPart || !therapistId || !appointmentSlot) {
-      return res.status(400).json({
-        success: false,
-        error: { code: 'VALIDATION_ERROR', message: 'Missing required fields: bodyPart, therapistId, or appointmentSlot' }
       })
     }
 
@@ -282,7 +277,7 @@ router.post('/submit-with-booking', requireAuth, requireRole('patient', 'admin')
 
     // 4. Verify therapist exists and is active
     const therapistCheck = await client.query(
-      `SELECT therapist_id FROM therapists WHERE therapist_id = $1 AND active = true`,
+      `SELECT therapist_id FROM therapists WHERE therapist_id = $1 AND active = true FOR UPDATE`,
       [therapistId]
     )
     

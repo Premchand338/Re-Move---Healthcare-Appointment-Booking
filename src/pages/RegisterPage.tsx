@@ -7,9 +7,9 @@ export const RegisterPage: React.FC = () => {
 
   return (
     <section className="min-h-[70vh] flex items-center justify-center px-4 py-16">
-      <div className="w-full max-w-lg rounded-[2rem] border border-[#E5E1D8] bg-white p-8 shadow-xl shadow-[#181816]/10">
+      <div className="w-full max-w-md rounded-3xl border border-[#E3DED3] bg-white p-8 shadow-xl shadow-[#1F1F1F]/10">
         <div className="mb-8 flex items-center gap-3">
-          <div className="flex h-12 w-12 items-center justify-center rounded-full bg-[#181816] text-[#F9F8F5]">
+          <div className="flex h-12 w-12 items-center justify-center rounded-full bg-[#1F4E45] text-white">
             <UserRound size={24} />
           </div>
           <div>
@@ -31,7 +31,7 @@ export const RegisterPage: React.FC = () => {
               <input
                 type="text"
                 placeholder="First name"
-                className="w-full rounded-2xl border border-[#E5E1D8] bg-[#F9F8F5] px-4 py-3 outline-none transition focus:border-[#C59E5F] focus:ring-2 focus:ring-[#C59E5F]/30"
+                className="w-full rounded-2xl border border-[#E3DED3] bg-[#F7F4EE] px-4 py-3 outline-none transition focus:border-[#8C3B2F] focus:ring-2 focus:ring-[#8C3B2F]/20"
               />
             </div>
             <div>
@@ -41,7 +41,7 @@ export const RegisterPage: React.FC = () => {
               <input
                 type="text"
                 placeholder="Last name"
-                className="w-full rounded-2xl border border-[#E5E1D8] bg-[#F9F8F5] px-4 py-3 outline-none transition focus:border-[#C59E5F] focus:ring-2 focus:ring-[#C59E5F]/30"
+                className="w-full rounded-2xl border border-[#E3DED3] bg-[#F7F4EE] px-4 py-3 outline-none transition focus:border-[#8C3B2F] focus:ring-2 focus:ring-[#8C3B2F]/20"
               />
             </div>
           </div>
@@ -53,7 +53,7 @@ export const RegisterPage: React.FC = () => {
             <input
               type="email"
               placeholder="you@example.com"
-              className="w-full rounded-2xl border border-[#E5E1D8] bg-[#F9F8F5] px-4 py-3 outline-none transition focus:border-[#C59E5F] focus:ring-2 focus:ring-[#C59E5F]/30"
+              className="w-full rounded-2xl border border-[#E3DED3] bg-[#F7F4EE] px-4 py-3 outline-none transition focus:border-[#8C3B2F] focus:ring-2 focus:ring-[#8C3B2F]/20"
             />
           </div>
 
@@ -64,7 +64,7 @@ export const RegisterPage: React.FC = () => {
             <input
               type="tel"
               placeholder="+91 98765 43210"
-              className="w-full rounded-2xl border border-[#E5E1D8] bg-[#F9F8F5] px-4 py-3 outline-none transition focus:border-[#C59E5F] focus:ring-2 focus:ring-[#C59E5F]/30"
+              className="w-full rounded-2xl border border-[#E3DED3] bg-[#F7F4EE] px-4 py-3 outline-none transition focus:border-[#8C3B2F] focus:ring-2 focus:ring-[#8C3B2F]/20"
             />
           </div>
 
@@ -75,18 +75,18 @@ export const RegisterPage: React.FC = () => {
             <input
               type="password"
               placeholder="••••••••"
-              className="w-full rounded-2xl border border-[#E5E1D8] bg-[#F9F8F5] px-4 py-3 outline-none transition focus:border-[#C59E5F] focus:ring-2 focus:ring-[#C59E5F]/30"
+              className="w-full rounded-2xl border border-[#E3DED3] bg-[#F7F4EE] px-4 py-3 outline-none transition focus:border-[#8C3B2F] focus:ring-2 focus:ring-[#8C3B2F]/20"
             />
           </div>
 
-          <button className="flex w-1/2 mx-auto mt-6 items-center justify-center gap-2 rounded-full bg-[#FFF04B] px-6 py-3 font-clinical-mono text-xs font-bold uppercase tracking-[0.2em] text-[#181816] transition hover:bg-[#F8E86B] border border-[#181816]">
+          <button className="ui-btn ui-btn-primary mt-6 w-full">
             Create My Account
-            <ArrowRight size={14} className="text-[#181816]" />
+            <ArrowRight size={14} />
           </button>
 
           <div className="flex items-center justify-center gap-2 text-[11px] font-medium text-[#5A5750]">
             <span>Already have an account?</span>
-            <button className="font-bold text-[#181816] hover:text-[#C59E5F]" onClick={() => navigate('/login')}>
+            <button className="ui-link font-bold" onClick={() => navigate('/login')}>
               Login here
             </button>
           </div>

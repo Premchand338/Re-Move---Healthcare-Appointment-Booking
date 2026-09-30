@@ -47,9 +47,9 @@ export const LoginPage: React.FC = () => {
 
   return (
     <section className="min-h-[70vh] flex items-center justify-center px-4 py-16">
-      <div className="w-full max-w-md rounded-4xl border border-[#E5E1D8] bg-white p-8 shadow-xl shadow-[#181816]/10">
+      <div className="w-full max-w-md rounded-3xl border border-[#E3DED3] bg-white p-8 shadow-xl shadow-[#1F1F1F]/10">
         <div className="mb-8 flex items-center gap-3">
-          <div className="flex h-12 w-12 items-center justify-center rounded-full bg-[#181816] text-[#F9F8F5]">
+          <div className="flex h-12 w-12 items-center justify-center rounded-full bg-[#1F4E45] text-white">
             <ShieldCheck size={24} />
           </div>
           <div>
@@ -82,7 +82,7 @@ export const LoginPage: React.FC = () => {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               placeholder="you@example.com"
-              className="w-full rounded-2xl border border-[#E5E1D8] bg-[#F9F8F5] px-4 py-3 outline-none transition focus:border-[#C59E5F] focus:ring-2 focus:ring-[#C59E5F]/30 disabled:opacity-50"
+              className="w-full rounded-2xl border border-[#E3DED3] bg-[#F7F4EE] px-4 py-3 outline-none transition focus:border-[#8C3B2F] focus:ring-2 focus:ring-[#8C3B2F]/20 disabled:opacity-50"
               disabled={isLoading}
             />
           </div>
@@ -97,7 +97,7 @@ export const LoginPage: React.FC = () => {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               placeholder="••••••••"
-              className="w-full rounded-2xl border border-[#E5E1D8] bg-[#F9F8F5] px-4 py-3 outline-none transition focus:border-[#C59E5F] focus:ring-2 focus:ring-[#C59E5F]/30 disabled:opacity-50"
+              className="w-full rounded-2xl border border-[#E3DED3] bg-[#F7F4EE] px-4 py-3 outline-none transition focus:border-[#8C3B2F] focus:ring-2 focus:ring-[#8C3B2F]/20 disabled:opacity-50"
               disabled={isLoading}
             />
           </div>
@@ -105,21 +105,21 @@ export const LoginPage: React.FC = () => {
           <button 
             type="submit"
             disabled={isLoading}
-            className="flex w-full mx-auto mt-6 items-center justify-center gap-2 rounded-full bg-[#FFF04B] px-6 py-3 font-clinical-mono text-xs font-bold uppercase tracking-[0.2em] text-[#181816] transition hover:bg-[#F8E86B] border border-[#181816] disabled:opacity-50 disabled:cursor-not-allowed"
+            className="ui-btn ui-btn-primary mt-6 w-full disabled:opacity-50 disabled:cursor-not-allowed"
           >
             {isLoading ? 'Logging in...' : 'Login to Dashboard'}
-            {!isLoading && <ArrowRight size={14} className="text-[#181816]" />}
+            {!isLoading && <ArrowRight size={14} />}
           </button>
 
           <div className="flex items-center justify-between text-[11px] font-medium text-[#5A5750]">
             <button 
               type="button" 
-              className="hover:text-[#181816]" 
+              className="ui-link" 
               onClick={() => navigate('/register')}
             >
               Create account
             </button>
-            <button type="button" className="hover:text-[#181816]">
+            <button type="button" className="ui-link">
               Forgot password?
             </button>
           </div>
