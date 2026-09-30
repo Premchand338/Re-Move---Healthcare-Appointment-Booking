@@ -14,6 +14,7 @@ import inquiryRoutes from './routes/inquiryRoutes'
 
 
 const app = express()
+app.set('trust proxy', 1)
 const port = Number(process.env.PORT ?? 4000)
 const defaultOrigins = process.env.NODE_ENV === 'production' ? '' : 'http://localhost:3000'
 const allowedOrigins = new Set(
@@ -121,4 +122,11 @@ const errorHandler: ErrorRequestHandler = (error, _req, res, _next) => {
 
 app.use(errorHandler)
 
-app.listen(port, () => console.log(`API running at http://localhost:${port}`))
+const server = app.listen(port, '0.0.0.0', () => {
+  console.log(`API running on port ${port}`)
+})
+
+server.on('error', (err: NodeJS.ErrnoException) => {
+  console.error('Server failed to start:', err.code, err.message)
+  process.exit(1)
+})

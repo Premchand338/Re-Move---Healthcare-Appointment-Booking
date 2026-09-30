@@ -2,7 +2,7 @@ import { Router } from 'express'
 import { pool } from '../db'
 import { requireAuth, requireRole } from '../middleware/auth'
 import { validate } from '../middleware/validate'
-import { inquirySchema } from '../../../shared/validationSchemas'
+import { inquirySchema } from '../shared/validationSchemas'
 
 const router = Router()
 

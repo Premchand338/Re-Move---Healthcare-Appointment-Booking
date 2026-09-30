@@ -4,7 +4,7 @@ import { pool } from '../db'
 import type { Appointment } from '../types/appointment'
 import { requireAuth, requireRole } from '../middleware/auth'
 import { validate } from '../middleware/validate'
-import { appointmentCreateSchema, appointmentUpdateSchema } from '../../../shared/validationSchemas'
+import { appointmentCreateSchema, appointmentUpdateSchema } from '../shared/validationSchemas'
 
 
 const router = Router()

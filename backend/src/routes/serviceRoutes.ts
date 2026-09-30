@@ -4,7 +4,7 @@ import type { Service } from '../types/service'
 import { assertNoActiveAppointments } from '../utils/appointmentGuard'
 import { requireAuth, requireRole } from '../middleware/auth'
 import { validate } from '../middleware/validate'
-import { serviceCreateSchema, serviceUpdateSchema } from '../../../shared/validationSchemas'
+import { serviceCreateSchema, serviceUpdateSchema } from '../shared/validationSchemas'
 
 const router = Router()
 const serviceColumns = `service_id AS "id", name, description, duration_minutes AS "durationMinutes", price,mode, active, created_at AS "createdAt", updated_at AS "updatedAt"`

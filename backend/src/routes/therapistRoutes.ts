@@ -4,7 +4,7 @@ import type { Therapist, TherapistInput } from '../types/therapist'
 import { assertNoActiveAppointments } from '../utils/appointmentGuard'
 import { requireAuth, requireRole } from '../middleware/auth'
 import { validate } from '../middleware/validate'
-import { therapistCreateSchema, therapistUpdateSchema } from '../../../shared/validationSchemas'
+import { therapistCreateSchema, therapistUpdateSchema } from '../shared/validationSchemas'
 
 const router = Router()
 

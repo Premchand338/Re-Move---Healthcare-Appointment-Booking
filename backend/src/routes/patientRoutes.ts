@@ -4,7 +4,7 @@ import type { Patient } from '../types/patient'
 import { assertNoActiveAppointments } from '../utils/appointmentGuard'
 import { requireAuth, requireRole } from '../middleware/auth'
 import { validate } from '../middleware/validate'
-import { patientCreateSchema, patientUpdateSchema } from '../../../shared/validationSchemas'
+import { patientCreateSchema, patientUpdateSchema } from '../shared/validationSchemas'
 import type { AuthRequest } from '../middleware/auth' 
 const router = Router()
 

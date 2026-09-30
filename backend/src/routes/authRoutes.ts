@@ -3,7 +3,7 @@ import bcrypt from 'bcrypt'
 import { pool } from '../db'
 import jwt, { type SignOptions } from 'jsonwebtoken'
 import { validate } from '../middleware/validate'
-import { loginSchema, registerSchema } from '../../../shared/validationSchemas'
+import { loginSchema, registerSchema } from '../shared/validationSchemas'
 
 const router = Router()
 
